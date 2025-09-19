@@ -153,19 +153,19 @@ export default function Contact() {
               <div className="w-16 h-16 mx-auto bg-gradient-to-br from-chart-1/20 to-chart-2/20 rounded-full flex items-center justify-center text-chart-1 mb-6">
                 <MapPin className="w-8 h-8" />
               </div>
-              <h2 className="text-2xl font-heading font-bold mb-4">Proudly Serving Chicagoland</h2>
+              <h2 className="text-2xl font-heading font-bold mb-4">Working Remotely, Specializing Locally</h2>
               <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Based in the heart of Chicago, we understand the unique needs of local businesses. 
-                We also work with clients nationwide for remote projects.
+                We work remotely with businesses nationwide, but specialize in understanding the unique needs of 
+                Chicagoland small businesses and nonprofits. Local expertise, remote convenience.
               </p>
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <div className="font-semibold">Primary Service Area</div>
-                  <div className="text-muted-foreground">Chicago & Suburbs</div>
+                  <div className="font-semibold">Service Specialty</div>
+                  <div className="text-muted-foreground">Chicagoland Businesses</div>
                 </div>
                 <div>
-                  <div className="font-semibold">Remote Projects</div>
-                  <div className="text-muted-foreground">Nationwide</div>
+                  <div className="font-semibold">Work Style</div>
+                  <div className="text-muted-foreground">Remote, Nationwide</div>
                 </div>
                 <div>
                   <div className="font-semibold">Meeting Options</div>

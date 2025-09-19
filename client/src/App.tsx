@@ -11,6 +11,8 @@ import { Footer } from "@/components/Footer";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
+import Portfolio from "@/pages/Portfolio";
+import Blog from "@/pages/Blog";
 import Pricing from "@/pages/Pricing";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
@@ -21,6 +23,8 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/services" component={Services} />
+      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/blog" component={Blog} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />

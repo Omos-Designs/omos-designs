@@ -26,8 +26,8 @@ export function Hero() {
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Custom-coded websites and web applications for small businesses in Chicagoland. 
-                No website builders, no templates – just personalized solutions that grow with your business.
+                Custom-coded websites and web applications for small businesses nationwide. 
+                Specializing in Chicagoland businesses with personalized, remote service and solutions that grow with your business.
               </p>
             </div>
 

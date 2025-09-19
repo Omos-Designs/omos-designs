@@ -5,29 +5,29 @@ const services = [
   {
     title: "Simple Website",
     description: "Perfect for small businesses just getting started online",
-    price: "Starting $2,000",
-    monthlyPrice: "$100-150/month",
+    monthlyPrice: "$150/month",
+    lumpSumPrice: "$2,000",
     features: [
       "1-2 page custom design",
       "Mobile responsive",
       "Contact form integration",
       "Basic SEO optimization",
-      "3 months free maintenance"
+      "Lifetime updates & redesigns"
     ],
     icon: <Globe className="w-8 h-8 text-chart-1" />
   },
   {
     title: "Complete Website",
     description: "Multi-page solution for established businesses",
-    price: "Starting $3,500",
-    monthlyPrice: "$150-250/month",
+    monthlyPrice: "$225/month",
+    lumpSumPrice: "$4,500",
     features: [
       "Custom multi-page design",
       "Content management system",
       "Advanced SEO features",
       "Google Analytics integration",
       "Professional email setup",
-      "6 months free maintenance"
+      "Lifetime updates & redesigns"
     ],
     popular: true,
     icon: <Layout className="w-8 h-8 text-chart-2" />
@@ -35,30 +35,31 @@ const services = [
   {
     title: "E-Commerce Website",
     description: "Complete online store with payment processing",
-    price: "Starting $6,000",
-    monthlyPrice: "$200-400/month",
+    monthlyPrice: "$350/month",
+    lumpSumPrice: "$8,000",
     features: [
       "Custom product catalog",
       "Secure payment processing",
       "Inventory management",
       "Order tracking system",
       "Customer account portal",
-      "Mobile-optimized checkout"
+      "Mobile-optimized checkout",
+      "Lifetime updates & redesigns"
     ],
     icon: <ShoppingCart className="w-8 h-8 text-chart-3" />
   },
   {
     title: "Web Applications",
     description: "Custom software solutions for complex business needs",
-    price: "Custom Pricing",
-    monthlyPrice: "$200-500+/month",
+    monthlyPrice: "$450/month",
+    lumpSumPrice: "Custom quote",
     features: [
       "Custom functionality",
       "User authentication",
       "Database integration",
       "API development",
       "Scalable architecture",
-      "Ongoing support & updates"
+      "Lifetime updates & redesigns"
     ],
     icon: <Rocket className="w-8 h-8 text-primary" />
   }
@@ -84,8 +85,8 @@ export function ServicesOverview() {
               key={index}
               title={service.title}
               description={service.description}
-              price={service.price}
               monthlyPrice={service.monthlyPrice}
+              lumpSumPrice={service.lumpSumPrice}
               features={service.features}
               popular={service.popular}
               icon={service.icon}

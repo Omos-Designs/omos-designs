@@ -45,13 +45,13 @@ export function Footer() {
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Your reliable digital partner for custom web solutions. 
-              Serving small businesses and nonprofits in Chicagoland with 
-              personalized service and professional results.
+              Working remotely with businesses nationwide, specializing in 
+              Chicagoland small businesses and nonprofits.
             </p>
             <div className="space-y-2 text-sm">
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>Chicagoland Area</span>
+                <span>Remote work, Chicagoland specialty</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />

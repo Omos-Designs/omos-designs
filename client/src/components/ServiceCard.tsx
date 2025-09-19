@@ -6,8 +6,8 @@ import { Check, ArrowRight } from "lucide-react";
 interface ServiceCardProps {
   title: string;
   description: string;
-  price: string;
-  monthlyPrice?: string;
+  monthlyPrice: string;
+  lumpSumPrice?: string;
   features: string[];
   popular?: boolean;
   icon: React.ReactNode;
@@ -17,8 +17,8 @@ interface ServiceCardProps {
 export function ServiceCard({
   title,
   description,
-  price,
   monthlyPrice,
+  lumpSumPrice,
   features,
   popular = false,
   icon,
@@ -49,10 +49,14 @@ export function ServiceCard({
         <CardDescription className="text-base">{description}</CardDescription>
         
         <div className="space-y-1 pt-4">
-          <div className="text-3xl font-heading font-bold">{price}</div>
-          {monthlyPrice && (
-            <div className="text-sm text-muted-foreground">
-              or {monthlyPrice}
+          <div className="text-3xl font-heading font-bold text-primary">{monthlyPrice}</div>
+          <div className="text-lg font-semibold text-chart-1">Monthly Plan</div>
+          <div className="text-sm text-muted-foreground">
+            Includes lifetime updates & redesigns
+          </div>
+          {lumpSumPrice && (
+            <div className="text-xs text-muted-foreground pt-2 border-t">
+              Alternative: {lumpSumPrice} + hosting
             </div>
           )}
         </div>
