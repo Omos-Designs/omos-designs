@@ -9,18 +9,33 @@ const services = [
     id: "simple",
     title: "Simple Website",
     description: "Perfect for small businesses just getting started online",
-    price: "Starting $2,000+",
-    monthlyPrice: "$100-150/month",
     timeline: "2-3 weeks",
-    features: [
-      "1-2 page custom design",
-      "Mobile responsive layout",
-      "Contact form integration",
-      "Basic SEO optimization",
-      "Google Analytics setup",
-      "3 months free maintenance",
-      "Professional email setup",
-      "Social media integration"
+    scope: "1-2 pages",
+    deliverables: [
+      "Custom homepage showcasing your business",
+      "About page with your story and values", 
+      "Professional contact form with lead capture",
+      "Mobile-responsive design for all devices",
+      "Basic search engine optimization (SEO)",
+      "Google Analytics setup and integration",
+      "Professional business email configuration",
+      "Social media links and integration",
+      "SSL certificate for security",
+      "Performance optimization for fast loading"
+    ],
+    process: [
+      "Discovery call to understand your business goals",
+      "Custom design mockups for your approval",
+      "Professional content writing and optimization",
+      "Development with clean, maintainable code",
+      "Testing across all devices and browsers",
+      "Launch with full training and documentation"
+    ],
+    ideal_for: [
+      "Local service businesses",
+      "Professional consultants",
+      "Small retail stores",
+      "Freelancers and contractors"
     ],
     icon: <Globe className="w-12 h-12 text-chart-1" />,
     color: "chart-1"
@@ -29,19 +44,36 @@ const services = [
     id: "complete",
     title: "Complete Website",
     description: "Multi-page solution for established businesses",
-    price: "Starting $3,500-6,000+",
-    monthlyPrice: "$150-250/month",
     timeline: "4-6 weeks",
-    features: [
-      "Custom multi-page design",
-      "Content management system",
-      "Advanced SEO features",
-      "Google Analytics & Search Console",
-      "Professional email setup",
-      "Blog functionality",
-      "6 months free maintenance",
-      "Training & documentation",
-      "Performance optimization"
+    scope: "5-10 pages",
+    deliverables: [
+      "Custom multi-page design with consistent branding",
+      "Easy-to-use content management system",
+      "Professional blog with category organization",
+      "Advanced SEO optimization for higher rankings",
+      "Google Analytics and Search Console setup",
+      "Professional email system with your domain",
+      "Contact forms with automated responses",
+      "Image galleries and media management",
+      "Customer testimonials and reviews section",
+      "Newsletter signup and lead capture",
+      "Social media integration and feeds"
+    ],
+    process: [
+      "In-depth strategy session and competitor analysis",
+      "Complete site architecture and wireframes",
+      "Custom design system and brand guidelines",
+      "Professional content writing and photography coordination",
+      "Development with advanced functionality",
+      "SEO optimization and local search setup",
+      "Comprehensive testing and quality assurance",
+      "Launch with full training and ongoing support"
+    ],
+    ideal_for: [
+      "Growing businesses with multiple services",
+      "Professional service firms",
+      "Restaurants and hospitality",
+      "Nonprofits and organizations"
     ],
     icon: <Layout className="w-12 h-12 text-chart-2" />,
     popular: true,
@@ -51,19 +83,39 @@ const services = [
     id: "ecommerce",
     title: "E-Commerce Website",
     description: "Complete online store with payment processing",
-    price: "Starting $6,000-10,000+",
-    monthlyPrice: "$200-400/month",
     timeline: "6-8 weeks",
-    features: [
-      "Custom product catalog",
-      "Secure payment processing",
-      "Inventory management system",
-      "Order tracking & management",
-      "Customer account portal",
-      "Mobile-optimized checkout",
-      "Email marketing integration",
-      "Analytics & reporting",
-      "SSL certificate included"
+    scope: "Full online store",
+    deliverables: [
+      "Custom product catalog with categories and filters",
+      "Secure payment processing (Stripe, PayPal, etc.)",
+      "Advanced inventory management system",
+      "Order tracking and management dashboard",
+      "Customer account portal with order history",
+      "Mobile-optimized checkout process",
+      "Shopping cart with save-for-later functionality",
+      "Product reviews and rating system",
+      "Coupon and discount code system",
+      "Email marketing integration (Mailchimp, Klaviyo)",
+      "Sales analytics and reporting dashboard",
+      "Automated order confirmation emails",
+      "Shipping calculator and tax management"
+    ],
+    process: [
+      "E-commerce strategy and competitor research",
+      "Product catalog organization and setup",
+      "Payment gateway integration and testing",
+      "Custom design with conversion optimization",
+      "Advanced functionality development",
+      "Payment security and compliance setup",
+      "Inventory and shipping system integration", 
+      "Comprehensive testing with real transactions",
+      "Launch with full training on order management"
+    ],
+    ideal_for: [
+      "Retail businesses expanding online",
+      "Product manufacturers",
+      "Subscription-based services",
+      "Digital product sellers"
     ],
     icon: <ShoppingCart className="w-12 h-12 text-chart-3" />,
     color: "chart-3"
@@ -72,19 +124,40 @@ const services = [
     id: "webapp",
     title: "Web Applications & SaaS",
     description: "Custom software solutions for complex business needs",
-    price: "Custom Pricing ($10K+)",
-    monthlyPrice: "$200-500+/month",
     timeline: "8-16 weeks",
-    features: [
-      "Custom functionality development",
-      "User authentication & roles",
-      "Database design & integration",
-      "API development & integration",
-      "Scalable cloud architecture",
-      "Ongoing support & updates",
-      "Performance monitoring",
-      "Security implementation",
-      "Documentation & training"
+    scope: "Custom application",
+    deliverables: [
+      "Custom business logic and workflow automation",
+      "User authentication with role-based permissions",
+      "Database design and optimization",
+      "RESTful API development for integrations",
+      "Admin dashboard with analytics and reporting",
+      "Automated email notifications and alerts",
+      "File upload and document management",
+      "Search and filtering capabilities", 
+      "Data export and import functionality",
+      "Third-party service integrations",
+      "Scalable cloud hosting architecture",
+      "Performance monitoring and optimization",
+      "Comprehensive security implementation",
+      "User training and technical documentation"
+    ],
+    process: [
+      "Discovery and requirements analysis",
+      "Technical architecture and database design",
+      "User experience design and prototyping",
+      "Agile development with regular check-ins",
+      "Integration with your existing systems",
+      "Security audit and penetration testing",
+      "Performance optimization and scalability testing",
+      "User training and comprehensive documentation",
+      "Deployment with monitoring and support"
+    ],
+    ideal_for: [
+      "Businesses with unique workflows", 
+      "SaaS and subscription services",
+      "Data-driven organizations",
+      "Companies needing custom automation"
     ],
     icon: <Rocket className="w-12 h-12 text-primary" />,
     color: "primary"
@@ -183,50 +256,79 @@ export default function Services() {
                           <span>{service.timeline}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <Badge variant="outline">Maintenance</Badge>
-                          <span>{service.monthlyPrice}</span>
+                          <Badge variant="outline">Scope</Badge>
+                          <span>{service.scope}</span>
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-start space-x-2">
-                            <Check className="w-5 h-5 text-chart-1 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{feature}</span>
-                          </div>
-                        ))}
+                      {/* What You Get */}
+                      <div className="space-y-4">
+                        <h3 className="font-heading font-semibold text-lg">What You Get:</h3>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          {service.deliverables.map((deliverable, idx) => (
+                            <div key={idx} className="flex items-start space-x-2">
+                              <Check className="w-4 h-4 text-chart-1 mt-0.5 flex-shrink-0" />
+                              <span className="text-sm">{deliverable}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Our Process */}
+                      <div className="space-y-4">
+                        <h3 className="font-heading font-semibold text-lg">Our Process:</h3>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          {service.process.map((step, idx) => (
+                            <div key={idx} className="flex items-start space-x-2">
+                              <div className="w-5 h-5 bg-chart-1/20 rounded-full flex items-center justify-center text-xs font-medium text-chart-1 mt-0.5 flex-shrink-0">
+                                {idx + 1}
+                              </div>
+                              <span className="text-sm">{step}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Ideal For */}
+                      <div className="space-y-4">
+                        <h3 className="font-heading font-semibold text-lg">Ideal For:</h3>
+                        <div className="flex flex-wrap gap-2">
+                          {service.ideal_for.map((type, idx) => (
+                            <Badge key={idx} variant="secondary" className="text-xs">
+                              {type}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    {/* Pricing & CTA */}
+                    {/* CTA Card */}
                     <div className="space-y-6">
-                      <Card className="p-6 text-center">
+                      <Card className="p-6 text-center bg-gradient-to-br from-chart-1/10 to-chart-2/10">
                         <div className="space-y-4">
-                          <div>
-                            <div className="text-3xl font-heading font-bold">{service.price}</div>
-                            <div className="text-sm text-muted-foreground">One-time setup</div>
-                          </div>
-                          <Separator />
-                          <div>
-                            <div className="text-lg font-semibold">{service.monthlyPrice}</div>
-                            <div className="text-sm text-muted-foreground">Monthly maintenance</div>
-                          </div>
+                          <h3 className="font-heading font-semibold">Ready to Get Started?</h3>
+                          <p className="text-sm text-muted-foreground">
+                            Let's discuss your project and create a custom solution for your business.
+                          </p>
                           <Button 
                             className="w-full" 
                             onClick={() => handleGetQuote(service.title)}
                             data-testid={`get-quote-${service.id}`}
                           >
-                            Get Free Quote
+                            Get Free Consultation
                           </Button>
+                          <div className="text-xs text-muted-foreground">
+                            View detailed pricing on our <a href="/pricing" className="text-primary hover:underline">Pricing page</a>
+                          </div>
                         </div>
                       </Card>
                       
-                      <div className="text-center text-sm text-muted-foreground">
-                        <p>All projects include:</p>
-                        <p>• Free consultation</p>
-                        <p>• Custom design</p>
-                        <p>• Training & support</p>
-                        <p>• Performance guarantee</p>
+                      <div className="text-center text-sm text-muted-foreground space-y-1">
+                        <p className="font-medium">Every project includes:</p>
+                        <p>✓ Free consultation & strategy session</p>
+                        <p>✓ Custom design tailored to your brand</p>
+                        <p>✓ Comprehensive training & documentation</p>
+                        <p>✓ Lifetime updates with monthly plans</p>
                       </div>
                     </div>
                   </div>
