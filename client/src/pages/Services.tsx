@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Check, Globe, Layout, ShoppingCart, Rocket, Plus, ArrowRight, Clock, Users } from "lucide-react";
+import { Check, Globe, Layout, ShoppingCart, Rocket, Plus, ArrowRight, Timer, Users } from "lucide-react";
 import { Link } from "wouter";
 
 const services = [
@@ -250,7 +250,7 @@ export default function Services() {
                           <p className="text-muted-foreground">{service.description}</p>
                           <div className="flex items-center gap-4 text-sm text-muted-foreground">
                             <span className="flex items-center gap-1">
-                              <Clock className="w-3 h-3" />
+                              <Timer className="w-3 h-3" />
                               {service.timeline}
                             </span>
                             <span className="flex items-center gap-1">
