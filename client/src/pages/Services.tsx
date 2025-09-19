@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Check, Globe, Layout, ShoppingCart, Rocket, Plus, ArrowRight } from "lucide-react";
+import { Link } from "wouter";
 
 const services = [
   {
@@ -167,33 +168,33 @@ const services = [
 const addOnServices = [
   {
     title: "SEO Optimization",
-    description: "Improve your search engine rankings",
-    price: "$500-1,500/month"
+    description: "Improve your search engine rankings and drive organic traffic to your website",
+    features: ["Keyword research & strategy", "On-page optimization", "Local SEO setup", "Monthly progress reports"]
   },
   {
     title: "Google Ads Management",
-    description: "Professional pay-per-click advertising",
-    price: "$800-2,000/month"
+    description: "Professional pay-per-click advertising campaigns that deliver results",
+    features: ["Campaign setup & optimization", "Audience targeting", "Ad copy creation", "Conversion tracking"]
   },
   {
     title: "Branding & Logo Design",
-    description: "Complete brand identity package",
-    price: "$1,500-3,000"
+    description: "Complete brand identity package to establish your professional presence",
+    features: ["Logo design & variations", "Brand guidelines", "Color palette & fonts", "Business card design"]
   },
   {
     title: "Maintenance & Support",
-    description: "Ongoing website updates and support",
-    price: "$150-500/month"
+    description: "Ongoing website updates, security monitoring, and technical support",
+    features: ["Regular updates & backups", "Security monitoring", "Technical support", "Performance optimization"]
   },
   {
     title: "Content Creation",
-    description: "Professional copywriting and imagery",
-    price: "$500-1,500/project"
+    description: "Professional copywriting and imagery that engages your audience",
+    features: ["Website copywriting", "Blog content creation", "Image sourcing & editing", "Social media content"]
   },
   {
     title: "Analytics & Reporting",
-    description: "Monthly performance reports",
-    price: "$200-500/month"
+    description: "Detailed insights into your website performance and visitor behavior",
+    features: ["Google Analytics setup", "Monthly performance reports", "Conversion tracking", "Actionable insights"]
   }
 ];
 
@@ -318,7 +319,7 @@ export default function Services() {
                             Get Free Consultation
                           </Button>
                           <div className="text-xs text-muted-foreground">
-                            View detailed pricing on our <a href="/pricing" className="text-primary hover:underline">Pricing page</a>
+                            View detailed pricing on our <Link href="/pricing" className="text-primary hover:underline" data-testid="link-pricing-services">Pricing page</Link>
                           </div>
                         </div>
                       </Card>
@@ -346,6 +347,9 @@ export default function Services() {
             <h2 className="text-3xl font-heading font-bold mb-4">Add-On Services</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Enhance your website with additional services designed to maximize your online success.
+              <span className="block mt-2 text-base">
+                <Link href="/pricing" className="text-primary hover:underline font-medium" data-testid="link-pricing-addons">View add-on pricing</Link> on our dedicated Pricing page.
+              </span>
             </p>
           </div>
 
@@ -359,8 +363,15 @@ export default function Services() {
                   <CardTitle className="text-lg">{addon.title}</CardTitle>
                   <CardDescription>{addon.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="text-lg font-semibold text-primary">{addon.price}</div>
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    {addon.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-2">
+                        <Check className="w-4 h-4 text-chart-1 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <Button 
                     variant="outline" 
                     size="sm" 
@@ -368,7 +379,7 @@ export default function Services() {
                     onClick={() => handleGetQuote(addon.title)}
                     data-testid={`addon-${addon.title.toLowerCase().replace(/\s+/g, '-')}`}
                   >
-                    Learn More
+                    Get Quote
                   </Button>
                 </CardContent>
               </Card>
