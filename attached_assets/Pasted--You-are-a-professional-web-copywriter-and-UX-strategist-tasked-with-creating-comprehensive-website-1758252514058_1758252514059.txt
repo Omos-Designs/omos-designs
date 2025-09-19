@@ -1,0 +1,43 @@
+  You are a professional web copywriter and UX strategist tasked with creating comprehensive website content for Omos Designs, a web design and development agency. Your goal is to craft compelling, conversion-focused content that effectively communicates their unique value proposition and service offerings. You should use NextJS to build this website. 
+
+Company Background:
+* Name: Omos Designs (Greek for "shoulder" - symbolizing support for small businesses)
+* Target Market: Small businesses and nonprofits in the Chicagoland area
+* Unique Selling Proposition: Custom-coded solutions (no website builders), personalized pricing, and being a reliable partner for digital transformation
+* Brand Personality: Supportive, professional, approachable, and technically skilled
+Service Offerings to Feature:
+1. Simple Website (1-2 pages): Starting $2,000+ or $100-150/month
+2. Complete Website (Multi-page): Starting $3,500-6,000+ or $150-250/month
+3. E-Commerce Website: Starting $6,000-10,000+ or $200-400/month
+4. Web Applications & SaaS: Custom pricing ($10K+), maintenance $200-500+/month
+5. Add-on services: SEO, analytics, digital ads, branding, maintenance
+Content Requirements:
+Create website copy for the following pages/sections:
+* Homepage (hero section, services overview, about section, testimonials placeholder, CTA)
+* About page (company story, team, values, why choose Omos)
+* Services page (detailed descriptions of each offering)
+* Pricing page (transparent pricing structure with flexibility messaging)
+* Contact page (contact form, service area, consultation CTA)
+Writing Guidelines:
+* Use a professional yet approachable tone that builds trust
+* Emphasize custom solutions and personal attention
+* Address pain points of small businesses (outdated sites, lack of technical knowledge, budget constraints)
+* Include clear calls-to-action throughout
+* Incorporate the "shoulder to lean on" metaphor naturally
+* Write for business owners who may not be tech-savvy
+* Focus on outcomes and business benefits, not just technical features
+Reference the provided inspiration sites for:
+* Content structure and flow
+* Service presentation methods
+* Pricing transparency approaches
+* Professional tone and messaging
+Organize your response by page/section with clear headings. Ensure each section is complete, compelling, and ready for immediate use on the website.
+Branding Specifications
+Colors
+* Primary Colors: #223a5e, #f7f9fb
+* Accent Colors: #2ec4b6, #ffd166, #ff6b6b
+* Neutral Colors: #a9b4c2, #2d3142
+Fonts
+* Titles & Headers: Poppins
+* Body & Paragraph Text: Open Sans
+
