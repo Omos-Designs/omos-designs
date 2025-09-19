@@ -1,86 +1,42 @@
-import { useState } from "react";
-import { useQuery, useMutation } from "@tanstack/react-query";
-import { queryClient, apiRequest } from "@/lib/queryClient";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Calendar, Clock, User, Plus, Edit, Trash2, ArrowRight, Loader2 } from "lucide-react";
-import { type BlogPost } from "@shared/schema";
+import { Calendar, Clock, User, ArrowRight, Loader2 } from "lucide-react";
+import { useLocation } from "wouter";
+import { getAllBlogPosts, getBlogPostsByCategory, type BlogPost } from "@/lib/blog";
 
 const categories = ["All", "Web Design Tips", "Business Strategy", "SEO & Marketing", "Case Studies"];
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isEditing, setIsEditing] = useState(false);
-  
-  const [newPost, setNewPost] = useState({
-    title: "",
-    excerpt: "",
-    content: "",
-    category: "Web Design Tips",
-    publishDate: "",
-    readTime: "",
-    author: "Omos Team"
-  });
+  const [blogData, setBlogData] = useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [, setLocation] = useLocation();
 
-  // Fetch blog posts with React Query
-  const { data: blogData = [], isLoading } = useQuery<BlogPost[]>({
-    queryKey: ["/api/blog"]
-  });
-
-  // Create blog post mutation
-  const createBlogMutation = useMutation({
-    mutationFn: async (data: any) => {
-      return apiRequest("POST", "/api/blog", {
-        ...data,
-        publishDate: data.publishDate || new Date().toISOString().split('T')[0],
-        readTime: data.readTime || "5 min read"
-      });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/blog"] });
-      setNewPost({
-        title: "",
-        excerpt: "",
-        content: "",
-        category: "Web Design Tips",
-        publishDate: "",
-        readTime: "",
-        author: "Omos Team"
-      });
-      setIsEditing(false);
-    }
-  });
-
-  // Delete blog post mutation
-  const deleteBlogMutation = useMutation({
-    mutationFn: async (id: string) => {
-      return apiRequest("DELETE", `/api/blog/${id}`);
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/blog"] });
-    }
-  });
+  // Load blog posts from markdown files
+  useEffect(() => {
+    const loadBlogPosts = async () => {
+      setIsLoading(true);
+      try {
+        const posts = await getAllBlogPosts();
+        setBlogData(posts);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadBlogPosts();
+  }, []);
 
   const filteredPosts = selectedCategory === "All" 
     ? blogData 
     : blogData.filter(post => post.category === selectedCategory);
 
-  const handleAddPost = () => {
-    if (newPost.title && newPost.excerpt && newPost.content) {
-      createBlogMutation.mutate(newPost);
-    }
-  };
-
-  const handleDeletePost = (id: string) => {
-    deleteBlogMutation.mutate(id);
-  };
-
-  const handleReadMore = (postId: string) => {
-    console.log(`Read more clicked for post: ${postId}`);
+  const handleReadMore = (slug: string) => {
+    setLocation(`/blog/${slug}`);
   };
 
   const handleSubscribe = () => {
@@ -116,125 +72,16 @@ export default function Blog() {
             </CardContent>
           </Card>
 
-          {/* Easy Content Management - Admin Section */}
-          {isEditing && (
-            <Card className="mt-8 bg-gradient-to-br from-chart-2/10 to-chart-3/10">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Plus className="w-5 h-5" />
-                  Add Blog Post
-                </CardTitle>
-                <CardDescription>Easy content management for blog updates</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="postTitle">Post Title</Label>
-                    <Input 
-                      id="postTitle"
-                      value={newPost.title}
-                      onChange={(e) => setNewPost({...newPost, title: e.target.value})}
-                      placeholder="Enter post title"
-                      data-testid="input-blog-title"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="postCategory">Category</Label>
-                    <select 
-                      className="w-full p-2 border rounded-md bg-background"
-                      value={newPost.category}
-                      onChange={(e) => setNewPost({...newPost, category: e.target.value})}
-                      data-testid="select-blog-category"
-                    >
-                      {categories.slice(1).map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-                
-                <div>
-                  <Label htmlFor="postExcerpt">Excerpt</Label>
-                  <Textarea
-                    id="postExcerpt" 
-                    value={newPost.excerpt}
-                    onChange={(e) => setNewPost({...newPost, excerpt: e.target.value})}
-                    placeholder="Brief description of the post (2-3 sentences)"
-                    className="min-h-20"
-                    data-testid="textarea-blog-excerpt"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="postContent">Content</Label>
-                  <Textarea
-                    id="postContent" 
-                    value={newPost.content}
-                    onChange={(e) => setNewPost({...newPost, content: e.target.value})}
-                    placeholder="Write your blog post content here..."
-                    className="min-h-32"
-                    data-testid="textarea-blog-content"
-                  />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="readTime">Read Time</Label>
-                    <Input 
-                      id="readTime"
-                      value={newPost.readTime}
-                      onChange={(e) => setNewPost({...newPost, readTime: e.target.value})}
-                      placeholder="5 min read"
-                      data-testid="input-blog-readtime"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="author">Author</Label>
-                    <Input 
-                      id="author"
-                      value={newPost.author}
-                      onChange={(e) => setNewPost({...newPost, author: e.target.value})}
-                      placeholder="Omos Team"
-                      data-testid="input-blog-author"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex gap-2">
-                  <Button 
-                    onClick={handleAddPost} 
-                    disabled={createBlogMutation.isPending}
-                    data-testid="button-add-blog"
-                  >
-                    {createBlogMutation.isPending ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Publishing...
-                      </>
-                    ) : (
-                      "Publish Post"
-                    )}
-                  </Button>
-                  <Button variant="outline" onClick={() => setIsEditing(false)} data-testid="button-cancel-blog">
-                    Cancel
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Admin Toggle */}
-          <div className="text-center mt-8">
-            <Button 
-              variant="outline" 
-              onClick={() => setIsEditing(!isEditing)}
-              className="flex items-center gap-2 mx-auto"
-              data-testid="button-toggle-blog-edit"
-            >
-              <Edit className="w-4 h-4" />
-              {isEditing ? 'Hide' : 'Manage'} Blog Content
-            </Button>
-          </div>
+          {/* Content Management Note */}
+          <Card className="mt-8 max-w-2xl mx-auto bg-gradient-to-br from-chart-3/10 to-chart-4/10">
+            <CardContent className="p-6 text-center">
+              <h3 className="font-heading font-semibold mb-2">Content Management</h3>
+              <p className="text-sm text-muted-foreground">
+                Blog posts are now managed through markdown files in the <code className="bg-muted px-1 rounded">/blog</code> directory. 
+                Add new <code className="bg-muted px-1 rounded">.md</code> files to create new posts.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -270,26 +117,10 @@ export default function Blog() {
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
                     <Badge variant="outline">{post.category}</Badge>
-                    {isEditing && (
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => handleDeletePost(post.id)}
-                        disabled={deleteBlogMutation.isPending}
-                        className="text-destructive hover:text-destructive"
-                        data-testid={`delete-blog-${post.id}`}
-                      >
-                        {deleteBlogMutation.isPending ? (
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
-                      </Button>
-                    )}
                   </div>
                   <CardTitle className="text-xl leading-tight">{post.title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">
-                    {post.excerpt}
+                    {post.description}
                   </CardDescription>
                 </CardHeader>
                 
@@ -299,7 +130,7 @@ export default function Blog() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
-                        <span>{new Date(post.publishDate).toLocaleDateString()}</span>
+                        <span>{new Date(post.date).toLocaleDateString()}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock className="w-4 h-4" />
@@ -316,9 +147,9 @@ export default function Blog() {
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      onClick={() => handleReadMore(post.id)}
+                      onClick={() => handleReadMore(post.slug)}
                       className="flex items-center gap-1"
-                      data-testid={`read-more-${post.id}`}
+                      data-testid={`read-more-${post.slug}`}
                     >
                       Read More
                       <ArrowRight className="w-3 h-3" />

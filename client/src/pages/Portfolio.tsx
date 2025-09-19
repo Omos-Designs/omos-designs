@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ExternalLink, Plus, Edit, Trash2, Globe, Calendar, Loader2 } from "lucide-react";
+import { ExternalLink, Plus, Edit, Trash2, Globe, Calendar, Loader2, LogIn } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { useLocation } from "wouter";
 import { type PortfolioItem } from "@shared/schema";
 
 const categories = ["All", "Simple Website", "Complete Website", "E-Commerce Website", "Web Application"];
@@ -15,6 +17,8 @@ const categories = ["All", "Simple Website", "Complete Website", "E-Commerce Web
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isEditing, setIsEditing] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
   
   const [newItem, setNewItem] = useState({
     title: "",
@@ -202,18 +206,32 @@ export default function Portfolio() {
             </Card>
           )}
 
-          {/* Admin Toggle */}
-          <div className="text-center mb-8">
-            <Button 
-              variant="outline" 
-              onClick={() => setIsEditing(!isEditing)}
-              className="flex items-center gap-2"
-              data-testid="button-toggle-portfolio-edit"
-            >
-              <Edit className="w-4 h-4" />
-              {isEditing ? 'Hide' : 'Manage'} Portfolio Content
-            </Button>
-          </div>
+          {/* Admin Toggle - Only show for authenticated users */}
+          {isAuthenticated ? (
+            <div className="text-center mb-8">
+              <Button 
+                variant="outline" 
+                onClick={() => setIsEditing(!isEditing)}
+                className="flex items-center gap-2"
+                data-testid="button-toggle-portfolio-edit"
+              >
+                <Edit className="w-4 h-4" />
+                {isEditing ? 'Hide' : 'Manage'} Portfolio Content
+              </Button>
+            </div>
+          ) : (
+            <div className="text-center mb-8">
+              <Button 
+                variant="outline" 
+                onClick={() => setLocation('/login')}
+                className="flex items-center gap-2"
+                data-testid="button-login-to-manage"
+              >
+                <LogIn className="w-4 h-4" />
+                Login to Manage Content
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

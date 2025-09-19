@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type PortfolioItem, type InsertPortfolioItem, type BlogPost, type InsertBlogPost } from "@shared/schema";
+import { type User, type InsertUser, type PortfolioItem, type InsertPortfolioItem } from "@shared/schema";
 import { randomUUID } from "crypto";
 
 // modify the interface with any CRUD methods
@@ -15,30 +15,29 @@ export interface IStorage {
   createPortfolioItem(item: InsertPortfolioItem): Promise<PortfolioItem>;
   updatePortfolioItem(id: string, item: Partial<InsertPortfolioItem>): Promise<PortfolioItem | undefined>;
   deletePortfolioItem(id: string): Promise<boolean>;
-  
-  // Blog methods
-  getAllBlogPosts(): Promise<BlogPost[]>;
-  getBlogPost(id: string): Promise<BlogPost | undefined>;
-  createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
-  updateBlogPost(id: string, post: Partial<InsertBlogPost>): Promise<BlogPost | undefined>;
-  deleteBlogPost(id: string): Promise<boolean>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
   private portfolioItems: Map<string, PortfolioItem>;
-  private blogPosts: Map<string, BlogPost>;
 
   constructor() {
     this.users = new Map();
     this.portfolioItems = new Map();
-    this.blogPosts = new Map();
     
     // Initialize with sample data
     this.initializeSampleData();
   }
 
   private initializeSampleData() {
+    // Create default admin user
+    const adminUser: User = {
+      id: "admin-1",
+      username: "admin",
+      password: "admin123" // In production, this should be properly hashed
+    };
+    this.users.set(adminUser.id, adminUser);
+    
     // Sample portfolio items
     const portfolioItem1: PortfolioItem = {
       id: "portfolio-1",
@@ -67,33 +66,6 @@ export class MemStorage implements IStorage {
     this.portfolioItems.set(portfolioItem1.id, portfolioItem1);
     this.portfolioItems.set(portfolioItem2.id, portfolioItem2);
     
-    // Sample blog posts
-    const blogPost1: BlogPost = {
-      id: "blog-1",
-      title: "5 Essential Features Every Small Business Website Needs",
-      excerpt: "Discover the must-have features that turn website visitors into customers and help your local business compete online.",
-      content: "Your website is often the first impression potential customers have of your business...",
-      category: "Web Design Tips",
-      publishDate: "2024-03-15",
-      readTime: "5 min read",
-      author: "Omos Team",
-      createdAt: new Date()
-    };
-    
-    const blogPost2: BlogPost = {
-      id: "blog-2", 
-      title: "Why Custom Code Beats Website Builders Every Time",
-      excerpt: "Learn why investing in custom-coded websites provides better performance, flexibility, and long-term value for your business.",
-      content: "In today's digital landscape, the temptation to use website builders is strong...",
-      category: "Business Strategy",
-      publishDate: "2024-03-10", 
-      readTime: "7 min read",
-      author: "Omos Team",
-      createdAt: new Date()
-    };
-    
-    this.blogPosts.set(blogPost1.id, blogPost1);
-    this.blogPosts.set(blogPost2.id, blogPost2);
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -150,40 +122,6 @@ export class MemStorage implements IStorage {
     return this.portfolioItems.delete(id);
   }
   
-  // Blog methods
-  async getAllBlogPosts(): Promise<BlogPost[]> {
-    return Array.from(this.blogPosts.values()).sort((a, b) => 
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
-  }
-
-  async getBlogPost(id: string): Promise<BlogPost | undefined> {
-    return this.blogPosts.get(id);
-  }
-
-  async createBlogPost(insertPost: InsertBlogPost): Promise<BlogPost> {
-    const id = randomUUID();
-    const post: BlogPost = { 
-      ...insertPost, 
-      id,
-      createdAt: new Date()
-    };
-    this.blogPosts.set(id, post);
-    return post;
-  }
-
-  async updateBlogPost(id: string, updates: Partial<InsertBlogPost>): Promise<BlogPost | undefined> {
-    const existing = this.blogPosts.get(id);
-    if (!existing) return undefined;
-    
-    const updated = { ...existing, ...updates };
-    this.blogPosts.set(id, updated);
-    return updated;
-  }
-
-  async deleteBlogPost(id: string): Promise<boolean> {
-    return this.blogPosts.delete(id);
-  }
 }
 
 export const storage = new MemStorage();

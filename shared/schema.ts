@@ -21,17 +21,6 @@ export const portfolioItems = pgTable("portfolio_items", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const blogPosts = pgTable("blog_posts", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  title: text("title").notNull(),
-  excerpt: text("excerpt").notNull(),
-  content: text("content").notNull(),
-  category: text("category").notNull(),
-  publishDate: text("publish_date").notNull(),
-  readTime: text("read_time").notNull(),
-  author: text("author").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
 
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
@@ -43,10 +32,6 @@ export const insertPortfolioItemSchema = createInsertSchema(portfolioItems).omit
   createdAt: true,
 });
 
-export const insertBlogPostSchema = createInsertSchema(blogPosts).omit({
-  id: true,
-  createdAt: true,
-});
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
@@ -54,5 +39,3 @@ export type User = typeof users.$inferSelect;
 export type PortfolioItem = typeof portfolioItems.$inferSelect;
 export type InsertPortfolioItem = z.infer<typeof insertPortfolioItemSchema>;
 
-export type BlogPost = typeof blogPosts.$inferSelect;
-export type InsertBlogPost = z.infer<typeof insertBlogPostSchema>;
