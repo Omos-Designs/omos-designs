@@ -28,11 +28,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   // Login mutation
-  const loginMutation = useMutation({
+  const loginMutation = useMutation<{ user: User }, Error, { username: string; password: string }>({
     mutationFn: async ({ username, password }: { username: string; password: string }) => {
       return apiRequest('POST', '/api/auth/login', { username, password });
     },
-    onSuccess: (data) => {
+    onSuccess: (data: { user: User }) => {
       setUser(data.user);
       queryClient.invalidateQueries({ queryKey: ['/api/auth/me'] });
     },

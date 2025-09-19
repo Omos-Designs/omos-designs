@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero";
-import { ServicesOverview } from "@/components/ServicesOverview";
+import { PricingSummary } from "@/components/PricingSummary";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -91,8 +91,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Overview with Pricing */}
-      <ServicesOverview />
+      {/* Pricing Summary */}
+      <PricingSummary />
 
       {/* Quick About */}
       <section className="py-16">
