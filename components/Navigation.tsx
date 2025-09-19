@@ -4,17 +4,30 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const navigationItems = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
   { name: "Portfolio", path: "/portfolio" },
   { name: "Blog", path: "/blog" },
   { name: "Pricing", path: "/pricing" },
   { name: "Contact", path: "/contact" },
+];
+
+const servicesItems = [
+  { name: "Overview", path: "/services" },
+  { name: "Simple Website", path: "/services/simple-website" },
+  { name: "Complete Website", path: "/services/complete-website" },
+  { name: "E-Commerce", path: "/services/e-commerce" },
+  { name: "Web Applications", path: "/services/web-applications" },
 ];
 
 export function Navigation() {
@@ -57,6 +70,41 @@ export function Navigation() {
                 {item.name}
               </Link>
             ))}
+            
+            {/* Services Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className={`text-sm font-medium transition-colors hover:text-primary flex items-center gap-1 ${
+                    pathname.startsWith('/services')
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  }`}
+                  data-testid="nav-dropdown-services"
+                >
+                  Services
+                  <ChevronDown className="w-3 h-3" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-48">
+                {servicesItems.map((service) => (
+                  <DropdownMenuItem key={service.path} asChild>
+                    <Link
+                      href={service.path}
+                      className={`w-full ${
+                        pathname === service.path
+                          ? "text-primary font-medium"
+                          : "text-muted-foreground"
+                      }`}
+                      data-testid={`nav-service-${service.name.toLowerCase().replace(' ', '-')}`}
+                    >
+                      {service.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Desktop Actions */}
@@ -127,6 +175,28 @@ export function Navigation() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Services Section */}
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-muted-foreground">Services</div>
+                <div className="pl-4 space-y-2">
+                  {servicesItems.map((service) => (
+                    <Link
+                      key={service.path}
+                      href={service.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`block text-sm transition-colors hover:text-primary ${
+                        pathname === service.path
+                          ? "text-primary font-medium"
+                          : "text-muted-foreground"
+                      }`}
+                      data-testid={`nav-service-mobile-${service.name.toLowerCase().replace(' ', '-')}`}
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <Button
                 className="w-full mt-4"
                 onClick={() => setIsMenuOpen(false)}
