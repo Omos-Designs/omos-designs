@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Check, Globe, Layout, ShoppingCart, Rocket, Plus, ArrowRight } from "lucide-react";
+import { Check, Globe, Layout, ShoppingCart, Rocket, Plus, ArrowRight, Clock, Users } from "lucide-react";
 import { Link } from "wouter";
 
 const services = [
@@ -238,64 +238,53 @@ export default function Services() {
                     </div>
                   )}
                   
-                  <div className="grid lg:grid-cols-3 gap-8 p-8">
+                  <div className="grid lg:grid-cols-5 gap-6 p-6">
                     {/* Service Info */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-3 space-y-4">
                       <div className="flex items-start space-x-4">
-                        <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-${service.color}/20 to-${service.color}/10 flex items-center justify-center flex-shrink-0`}>
+                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br from-${service.color}/20 to-${service.color}/10 flex items-center justify-center flex-shrink-0`}>
                           {service.icon}
                         </div>
-                        <div className="space-y-2">
-                          <h2 className="text-2xl font-heading font-bold">{service.title}</h2>
-                          <p className="text-lg text-muted-foreground">{service.description}</p>
+                        <div className="space-y-1">
+                          <h2 className="text-xl font-heading font-bold">{service.title}</h2>
+                          <p className="text-muted-foreground">{service.description}</p>
+                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {service.timeline}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Users className="w-3 h-3" />
+                              {service.scope}
+                            </span>
+                          </div>
                         </div>
                       </div>
 
-                      <div className="grid sm:grid-cols-2 gap-4 text-sm">
-                        <div className="flex items-center space-x-2">
-                          <Badge variant="outline">Timeline</Badge>
-                          <span>{service.timeline}</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Badge variant="outline">Scope</Badge>
-                          <span>{service.scope}</span>
-                        </div>
-                      </div>
-
-                      {/* What You Get */}
-                      <div className="space-y-4">
-                        <h3 className="font-heading font-semibold text-lg">What You Get:</h3>
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          {service.deliverables.map((deliverable, idx) => (
+                      {/* Key Features */}
+                      <div className="space-y-3">
+                        <h3 className="font-heading font-semibold">Key Features:</h3>
+                        <div className="grid sm:grid-cols-2 gap-2">
+                          {service.deliverables.slice(0, 4).map((deliverable, idx) => (
                             <div key={idx} className="flex items-start space-x-2">
                               <Check className="w-4 h-4 text-chart-1 mt-0.5 flex-shrink-0" />
                               <span className="text-sm">{deliverable}</span>
                             </div>
                           ))}
                         </div>
-                      </div>
-
-                      {/* Our Process */}
-                      <div className="space-y-4">
-                        <h3 className="font-heading font-semibold text-lg">Our Process:</h3>
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          {service.process.map((step, idx) => (
-                            <div key={idx} className="flex items-start space-x-2">
-                              <div className="w-5 h-5 bg-chart-1/20 rounded-full flex items-center justify-center text-xs font-medium text-chart-1 mt-0.5 flex-shrink-0">
-                                {idx + 1}
-                              </div>
-                              <span className="text-sm">{step}</span>
-                            </div>
-                          ))}
-                        </div>
+                        {service.deliverables.length > 4 && (
+                          <p className="text-xs text-muted-foreground">
+                            + {service.deliverables.length - 4} more features included
+                          </p>
+                        )}
                       </div>
 
                       {/* Ideal For */}
-                      <div className="space-y-4">
-                        <h3 className="font-heading font-semibold text-lg">Ideal For:</h3>
-                        <div className="flex flex-wrap gap-2">
+                      <div className="space-y-2">
+                        <h3 className="font-heading font-semibold text-sm">Perfect for:</h3>
+                        <div className="flex flex-wrap gap-1">
                           {service.ideal_for.map((type, idx) => (
-                            <Badge key={idx} variant="secondary" className="text-xs">
+                            <Badge key={idx} variant="secondary" className="text-xs px-2 py-1">
                               {type}
                             </Badge>
                           ))}
@@ -303,33 +292,33 @@ export default function Services() {
                       </div>
                     </div>
 
-                    {/* CTA Card */}
-                    <div className="space-y-6">
-                      <Card className="p-6 text-center bg-gradient-to-br from-chart-1/10 to-chart-2/10">
-                        <div className="space-y-4">
-                          <h3 className="font-heading font-semibold">Ready to Get Started?</h3>
-                          <p className="text-sm text-muted-foreground">
-                            Let's discuss your project and create a custom solution for your business.
-                          </p>
+                    {/* CTA Section */}
+                    <div className="lg:col-span-2 space-y-4">
+                      <Card className="p-4 text-center bg-gradient-to-br from-chart-1/10 to-chart-2/10 h-fit">
+                        <div className="space-y-3">
+                          <h3 className="font-heading font-semibold">Get Started</h3>
                           <Button 
                             className="w-full" 
                             onClick={() => handleGetQuote(service.title)}
                             data-testid={`get-quote-${service.id}`}
                           >
-                            Get Free Consultation
+                            Free Consultation
                           </Button>
                           <div className="text-xs text-muted-foreground">
-                            View detailed pricing on our <Link href="/pricing" className="text-primary hover:underline" data-testid="link-pricing-services">Pricing page</Link>
+                            <Link href="/pricing" className="text-primary hover:underline" data-testid="link-pricing-services">View pricing</Link>
                           </div>
                         </div>
                       </Card>
                       
-                      <div className="text-center text-sm text-muted-foreground space-y-1">
-                        <p className="font-medium">Every project includes:</p>
-                        <p>✓ Free consultation & strategy session</p>
-                        <p>✓ Custom design tailored to your brand</p>
-                        <p>✓ Comprehensive training & documentation</p>
-                        <p>✓ Lifetime updates with monthly plans</p>
+                      <div className="bg-muted/50 rounded-lg p-4">
+                        <div className="text-xs text-muted-foreground space-y-1">
+                          <p className="font-medium text-foreground">Always included:</p>
+                          <p>✓ Free consultation</p>
+                          <p>✓ Custom design</p>
+                          <p>✓ Full training</p>
+                          <p>✓ Lifetime updates*</p>
+                          <p className="text-xs italic">*with monthly plans</p>
+                        </div>
                       </div>
                     </div>
                   </div>
