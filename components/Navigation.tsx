@@ -1,10 +1,11 @@
+"use client"
+
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Menu, X, LogIn, LogOut, User } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
-import { useAuth } from "@/hooks/useAuth";
-import logoBanner from "@assets/Omos Designs - Logo Banner_1758253997938.png";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 
 const navigationItems = [
   { name: "Home", path: "/" },
@@ -17,11 +18,9 @@ const navigationItems = [
 ];
 
 export function Navigation() {
-  const [location] = useLocation();
+  const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, user, logout } = useAuth();
-  const [, setLocation] = useLocation();
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -37,12 +36,9 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img 
-              src={logoBanner} 
-              alt="Omos Designs" 
-              className="h-10 w-auto"
-              data-testid="logo"
-            />
+            <div className="font-heading font-bold text-xl text-primary">
+              Omos Designs
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -52,7 +48,7 @@ export function Navigation() {
                 key={item.path}
                 href={item.path}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location === item.path
+                  pathname === item.path
                     ? "text-primary"
                     : "text-muted-foreground"
                 }`}
@@ -78,43 +74,6 @@ export function Navigation() {
               )}
               <span className="sr-only">Toggle theme</span>
             </Button>
-            
-            {/* Authentication Controls */}
-            {isAuthenticated ? (
-              <div className="flex items-center space-x-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="flex items-center gap-2"
-                  data-testid="user-info"
-                >
-                  <User className="w-4 h-4" />
-                  {user?.username}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={logout}
-                  className="flex items-center gap-2"
-                  data-testid="button-logout"
-                >
-                  <LogOut className="w-4 h-4" />
-                  Logout
-                </Button>
-              </div>
-            ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setLocation('/login')}
-                className="flex items-center gap-2"
-                data-testid="button-login"
-              >
-                <LogIn className="w-4 h-4" />
-                Login
-              </Button>
-            )}
-            
             <Button data-testid="cta-consultation">Get Free Consultation</Button>
           </div>
 
@@ -159,7 +118,7 @@ export function Navigation() {
                   href={item.path}
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    location === item.path
+                    pathname === item.path
                       ? "text-primary"
                       : "text-muted-foreground"
                   }`}
@@ -168,46 +127,6 @@ export function Navigation() {
                   {item.name}
                 </Link>
               ))}
-              
-              {/* Mobile Authentication Controls */}
-              {isAuthenticated ? (
-                <div className="flex flex-col space-y-2 mt-4">
-                  <Button
-                    variant="ghost"
-                    className="w-full flex items-center gap-2 justify-start"
-                    data-testid="mobile-user-info"
-                  >
-                    <User className="w-4 h-4" />
-                    Signed in as {user?.username}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full flex items-center gap-2"
-                    onClick={() => {
-                      logout();
-                      setIsMenuOpen(false);
-                    }}
-                    data-testid="mobile-button-logout"
-                  >
-                    <LogOut className="w-4 h-4" />
-                    Logout
-                  </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="outline"
-                  className="w-full mt-4 flex items-center gap-2"
-                  onClick={() => {
-                    setLocation('/login');
-                    setIsMenuOpen(false);
-                  }}
-                  data-testid="mobile-button-login"
-                >
-                  <LogIn className="w-4 h-4" />
-                  Login
-                </Button>
-              )}
-              
               <Button
                 className="w-full mt-4"
                 onClick={() => setIsMenuOpen(false)}
