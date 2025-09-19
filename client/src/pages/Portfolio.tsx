@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { ExternalLink, Plus, Edit, Trash2, Globe, Calendar, Loader2, LogIn } from "lucide-react";
+import { ExternalLink, Plus, Edit, Trash2, Globe, Calendar, Loader2 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocation } from "wouter";
 import { type PortfolioItem } from "@shared/schema";
@@ -207,7 +207,7 @@ export default function Portfolio() {
           )}
 
           {/* Admin Toggle - Only show for authenticated users */}
-          {isAuthenticated ? (
+          {isAuthenticated && (
             <div className="text-center mb-8">
               <Button 
                 variant="outline" 
@@ -217,18 +217,6 @@ export default function Portfolio() {
               >
                 <Edit className="w-4 h-4" />
                 {isEditing ? 'Hide' : 'Manage'} Portfolio Content
-              </Button>
-            </div>
-          ) : (
-            <div className="text-center mb-8">
-              <Button 
-                variant="outline" 
-                onClick={() => setLocation('/login')}
-                className="flex items-center gap-2"
-                data-testid="button-login-to-manage"
-              >
-                <LogIn className="w-4 h-4" />
-                Login to Manage Content
               </Button>
             </div>
           )}

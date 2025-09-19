@@ -72,16 +72,6 @@ export default function Blog() {
             </CardContent>
           </Card>
 
-          {/* Content Management Note */}
-          <Card className="mt-8 max-w-2xl mx-auto bg-gradient-to-br from-chart-3/10 to-chart-4/10">
-            <CardContent className="p-6 text-center">
-              <h3 className="font-heading font-semibold mb-2">Content Management</h3>
-              <p className="text-sm text-muted-foreground">
-                Blog posts are now managed through markdown files in the <code className="bg-muted px-1 rounded">/blog</code> directory. 
-                Add new <code className="bg-muted px-1 rounded">.md</code> files to create new posts.
-              </p>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
