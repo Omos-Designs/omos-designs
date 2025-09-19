@@ -5,58 +5,76 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 225 40% 25%;
-    --card: 0 0% 100%;
-    --card-foreground: 225 40% 25%;
+    /* Omos Design System Colors - Light Mode */
+    --background: 218 33% 97%;      /* #f7f9fb - Light gray background */
+    --foreground: 223 42% 37%;      /* #223a5e - Navy blue for text */
+    --card: 0 0% 100%;              /* White cards */
+    --card-foreground: 223 42% 37%; /* Navy text on cards */
+    --card-border: 214 32% 91%;     /* Light border */
     --popover: 0 0% 100%;
-    --popover-foreground: 225 40% 25%;
-    --primary: 213 53% 25%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 210 40% 95%;
-    --secondary-foreground: 225 40% 25%;
+    --popover-foreground: 223 42% 37%;
+    --popover-border: 214 32% 91%;
+    --primary: 223 42% 37%;         /* #223a5e - Navy blue primary */
+    --primary-foreground: 0 0% 98%; /* White text on primary */
+    --primary-border: 223 42% 37%;
+    --secondary: 210 40% 95%;       /* Light secondary */
+    --secondary-foreground: 223 42% 37%;
+    --secondary-border: 214 32% 91%;
     --muted: 210 40% 95%;
-    --muted-foreground: 225 20% 50%;
-    --accent: 180 65% 60%;
-    --accent-foreground: 225 40% 25%;
+    --muted-foreground: 223 20% 50%;
+    --muted-border: 214 32% 91%;
+    --accent: 177 70% 47%;          /* #2ec4b6 - Teal accent */
+    --accent-foreground: 0 0% 98%;
+    --accent-border: 177 70% 47%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
+    --destructive-border: 0 84% 60%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 213 53% 25%;
+    --ring: 177 70% 47%;            /* Teal ring */
     --radius: 0.5rem;
-    --chart-1: 180 65% 60%;
-    --chart-2: 45 85% 65%;
-    --chart-3: 10 80% 65%;
-    --chart-4: 280 60% 70%;
-    --chart-5: 130 60% 60%;
+    /* Omos accent colors for charts/highlights */
+    --chart-1: 177 70% 47%;         /* Teal */
+    --chart-2: 45 100% 70%;         /* Yellow - #ffd166 */
+    --chart-3: 0 100% 70%;          /* Coral - #ff6b6b */
+    --chart-4: 223 42% 37%;         /* Navy */
+    --chart-5: 280 60% 70%;         /* Purple variant */
   }
 
   .dark {
-    --background: 225 40% 8%;
-    --foreground: 210 40% 95%;
-    --card: 225 40% 10%;
-    --card-foreground: 210 40% 95%;
-    --popover: 225 40% 10%;
-    --popover-foreground: 210 40% 95%;
-    --primary: 180 65% 60%;
-    --primary-foreground: 225 40% 10%;
-    --secondary: 225 40% 15%;
-    --secondary-foreground: 210 40% 95%;
-    --muted: 225 40% 15%;
-    --muted-foreground: 225 20% 65%;
-    --accent: 180 65% 60%;
-    --accent-foreground: 225 40% 10%;
+    /* Omos Design System Colors - Dark Mode */
+    --background: 223 42% 12%;      /* Dark navy background */
+    --foreground: 218 33% 97%;      /* Light text */
+    --card: 223 30% 18%;            /* Secondary dark background */
+    --card-foreground: 218 33% 97%; /* Light text on cards */
+    --card-border: 223 30% 25%;     /* Darker border */
+    --popover: 223 30% 18%;
+    --popover-foreground: 218 33% 97%;
+    --popover-border: 223 30% 25%;
+    --primary: 177 70% 47%;         /* Teal primary in dark mode */
+    --primary-foreground: 223 42% 12%; /* Dark text on teal */
+    --primary-border: 177 70% 47%;
+    --secondary: 223 30% 25%;       /* Darker secondary */
+    --secondary-foreground: 218 33% 97%;
+    --secondary-border: 223 30% 30%;
+    --muted: 223 30% 25%;
+    --muted-foreground: 223 20% 65%;
+    --muted-border: 223 30% 30%;
+    --accent: 177 70% 47%;          /* Teal accent */
+    --accent-foreground: 223 42% 12%;
+    --accent-border: 177 70% 47%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 225 40% 18%;
-    --input: 225 40% 18%;
-    --ring: 180 65% 60%;
-    --chart-1: 180 65% 60%;
-    --chart-2: 45 85% 65%;
-    --chart-3: 10 80% 65%;
-    --chart-4: 280 60% 70%;
-    --chart-5: 130 60% 60%;
+    --destructive-border: 0 62% 50%;
+    --border: 223 30% 25%;
+    --input: 223 30% 25%;
+    --ring: 177 70% 47%;
+    /* Same accent colors with adjusted contrast */
+    --chart-1: 177 70% 47%;         /* Teal */
+    --chart-2: 45 100% 70%;         /* Yellow */
+    --chart-3: 0 100% 70%;          /* Coral */
+    --chart-4: 218 33% 97%;         /* Light */
+    --chart-5: 280 60% 70%;         /* Purple variant */
   }
 }
 
