@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import logoBanner from "@assets/Omos Designs - Logo Banner_1758253997938.png";
 
 const navigationItems = [
   { name: "Home", path: "/" },
@@ -32,11 +33,13 @@ export function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">O</span>
-            </div>
-            <span className="font-heading font-bold text-xl">Omos Designs</span>
+          <Link href="/" className="flex items-center">
+            <img 
+              src={logoBanner} 
+              alt="Omos Designs" 
+              className="h-10 w-auto"
+              data-testid="logo"
+            />
           </Link>
 
           {/* Desktop Navigation */}
