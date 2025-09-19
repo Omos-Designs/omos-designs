@@ -3,37 +3,38 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Check, HelpCircle, ArrowRight, DollarSign } from "lucide-react";
-import { ServiceCard } from "@/components/ServiceCard";
 import { Globe, Layout, ShoppingCart, Rocket } from "lucide-react";
 
 const pricingTiers = [
   {
     title: "Simple Website",
     description: "Perfect for small businesses just getting started online",
-    monthlyPrice: "$150/month",
-    lumpSumPrice: "$2,000 + hosting",
-    features: [
-      "1-2 page custom design",
-      "Mobile responsive",
-      "Contact form integration",
-      "Basic SEO optimization",
-      "Lifetime updates & redesigns"
+    monthlyPrice: "$150",
+    monthlyIncludes: "Everything + lifetime updates",
+    lumpSumPrice: "$2,000",
+    lumpSumHosting: "$25/month hosting",
+    keyFeatures: [
+      "Complete custom website (1-2 pages)",
+      "Lifetime updates & redesigns included",
+      "Professional hosting & maintenance",
+      "Email support & technical assistance",
+      "No contracts or hidden fees"
     ],
     icon: <Globe className="w-8 h-8 text-chart-1" />
   },
   {
     title: "Complete Website",
     description: "Multi-page solution for established businesses",
-    monthlyPrice: "$225/month",
-    lumpSumPrice: "$4,500 + hosting",
-    features: [
-      "Custom multi-page design",
-      "Content management system",
-      "Advanced SEO features",
-      "Google Analytics integration",
-      "Professional email setup",
-      "Blog functionality",
-      "Lifetime updates & redesigns"
+    monthlyPrice: "$225",
+    monthlyIncludes: "Everything + lifetime updates",
+    lumpSumPrice: "$4,500",
+    lumpSumHosting: "$35/month hosting",
+    keyFeatures: [
+      "Multi-page website with CMS",
+      "Lifetime updates & redesigns included", 
+      "Professional hosting & maintenance",
+      "Priority email & phone support",
+      "Advanced SEO & analytics setup"
     ],
     popular: true,
     icon: <Layout className="w-8 h-8 text-chart-2" />
@@ -41,31 +42,32 @@ const pricingTiers = [
   {
     title: "E-Commerce Website",
     description: "Complete online store with payment processing",
-    monthlyPrice: "$350/month",
-    lumpSumPrice: "$8,000 + hosting",
-    features: [
-      "Custom product catalog",
-      "Secure payment processing",
-      "Inventory management",
-      "Order tracking system",
-      "Customer account portal",
-      "Mobile-optimized checkout",
-      "Lifetime updates & redesigns"
+    monthlyPrice: "$350",
+    monthlyIncludes: "Everything + lifetime updates",
+    lumpSumPrice: "$8,000",
+    lumpSumHosting: "$50/month hosting",
+    keyFeatures: [
+      "Complete e-commerce solution",
+      "Lifetime updates & redesigns included",
+      "Premium hosting & security",
+      "Priority support & maintenance",
+      "Payment processing setup included"
     ],
     icon: <ShoppingCart className="w-8 h-8 text-chart-3" />
   },
   {
     title: "Web Applications",
     description: "Custom software solutions for complex business needs",
-    monthlyPrice: "$450/month",
+    monthlyPrice: "$450+",
+    monthlyIncludes: "Everything + lifetime updates",
     lumpSumPrice: "Custom quote",
-    features: [
-      "Custom functionality",
-      "User authentication",
-      "Database integration",
-      "API development",
-      "Scalable architecture",
-      "Lifetime updates & redesigns"
+    lumpSumHosting: "$75+/month hosting",
+    keyFeatures: [
+      "Custom web application development",
+      "Lifetime updates & maintenance included",
+      "Enterprise hosting & security",
+      "Dedicated support & consultation",
+      "Scalable architecture & integrations"
     ],
     icon: <Rocket className="w-8 h-8 text-primary" />
   }
@@ -144,8 +146,8 @@ export default function Pricing() {
             Honest, Flexible Pricing
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-            No surprises, no hidden fees. Choose between upfront payment or spread costs 
-            with monthly plans that include ongoing maintenance and support.
+            <strong>Monthly plans include everything</strong> - lifetime updates, redesigns, hosting, and support.
+            Lump sum options available but don't include ongoing updates or maintenance.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -178,16 +180,63 @@ export default function Pricing() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pricingTiers.map((tier, index) => (
-              <ServiceCard
-                key={index}
-                title={tier.title}
-                description={tier.description}
-                monthlyPrice={tier.monthlyPrice}
-                lumpSumPrice={tier.lumpSumPrice}
-                features={tier.features}
-                popular={tier.popular}
-                icon={tier.icon}
-              />
+              <Card key={index} className={`relative h-full hover-elevate transition-all duration-300 ${
+                tier.popular ? 'ring-2 ring-primary shadow-lg' : ''
+              }`}>
+                {tier.popular && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-gradient-to-r from-chart-1 to-chart-2 text-white">
+                      Most Popular
+                    </Badge>
+                  </div>
+                )}
+                
+                <CardHeader className="text-center pb-4">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-chart-1/20 to-chart-2/20 flex items-center justify-center">
+                    {tier.icon}
+                  </div>
+                  <CardTitle className="font-heading text-xl mb-2">{tier.title}</CardTitle>
+                  <CardDescription className="text-sm">{tier.description}</CardDescription>
+                  
+                  {/* Monthly Pricing - PRIMARY */}
+                  <div className="bg-gradient-to-r from-primary/10 to-chart-1/10 rounded-lg p-4 mt-4">
+                    <div className="text-3xl font-heading font-bold text-primary">{tier.monthlyPrice}<span className="text-lg">/month</span></div>
+                    <div className="text-sm font-medium text-chart-1">{tier.monthlyIncludes}</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      ✓ No contracts • ✓ Cancel anytime • ✓ All features included
+                    </div>
+                  </div>
+
+                  {/* Lump Sum Alternative - SECONDARY */}
+                  <div className="mt-3 pt-3 border-t">
+                    <div className="text-sm text-muted-foreground">Alternative option:</div>
+                    <div className="text-lg font-semibold">{tier.lumpSumPrice}</div>
+                    <div className="text-xs text-muted-foreground">
+                      + {tier.lumpSumHosting} • No updates included
+                    </div>
+                  </div>
+                </CardHeader>
+                
+                <CardContent className="space-y-4">
+                  <ul className="space-y-2">
+                    {tier.keyFeatures.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start space-x-2">
+                        <Check className="w-4 h-4 text-chart-1 mt-0.5 flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button 
+                    className="w-full" 
+                    variant={tier.popular ? "default" : "outline"}
+                    onClick={handleGetQuote}
+                    data-testid={`pricing-tier-${tier.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    Get Started
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>

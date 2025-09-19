@@ -10,26 +10,29 @@ const pricingTiers = [
     description: "Perfect for small businesses just getting started online",
     monthlyPrice: "$150",
     icon: <Globe className="w-6 h-6 text-chart-1" />,
-    highlight: "Most Popular"
+    highlight: "Great Start"
   },
   {
     title: "Complete Website", 
     description: "Multi-page solution for established businesses",
     monthlyPrice: "$225",
     icon: <Layout className="w-6 h-6 text-chart-2" />,
-    popular: true
+    popular: true,
+    highlight: "Most Popular"
   },
   {
     title: "E-Commerce",
     description: "Complete online store with payment processing",
     monthlyPrice: "$350", 
-    icon: <ShoppingCart className="w-6 h-6 text-chart-3" />
+    icon: <ShoppingCart className="w-6 h-6 text-chart-3" />,
+    highlight: "Sell Online"
   },
   {
     title: "Web Applications",
     description: "Custom software solutions for complex needs",
-    monthlyPrice: "$450",
-    icon: <Rocket className="w-6 h-6 text-primary" />
+    monthlyPrice: "$450+",
+    icon: <Rocket className="w-6 h-6 text-primary" />,
+    highlight: "Custom Solution"
   }
 ];
 
@@ -42,8 +45,8 @@ export function PricingSummary() {
             Transparent Monthly Pricing
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            Custom-coded solutions with lifetime updates included. 
-            Choose the tier that fits your business needs.
+            <strong>Monthly plans include everything</strong> - lifetime updates, redesigns, hosting, and support.
+            Lump sum options available (details on Pricing page).
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/services">
@@ -85,9 +88,9 @@ export function PricingSummary() {
                   {tier.description}
                 </p>
                 <div className="space-y-2 text-xs text-muted-foreground">
-                  <div>✓ Custom-coded (no templates)</div>
-                  <div>✓ Lifetime updates included</div>
-                  <div>✓ Mobile responsive design</div>
+                  <div>✓ Everything included monthly</div>
+                  <div>✓ Lifetime updates & redesigns</div>
+                  <div>✓ No contracts or hidden fees</div>
                 </div>
               </CardContent>
             </Card>
@@ -96,10 +99,10 @@ export function PricingSummary() {
 
         <div className="text-center mt-8 space-y-2">
           <p className="text-sm text-muted-foreground">
-            All plans include <strong>lifetime updates & redesigns</strong> • Lump sum options available
+            <strong>Monthly pricing includes lifetime updates & redesigns</strong> • All features included • No contracts
           </p>
           <p className="text-xs text-muted-foreground">
-            Serving businesses nationwide • Specializing in Chicagoland
+            Lump sum options available but don't include updates • Serving nationwide, specializing in Chicagoland
           </p>
         </div>
       </div>
