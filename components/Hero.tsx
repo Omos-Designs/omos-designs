@@ -1,7 +1,8 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Code, Palette, Zap } from "lucide-react";
-import heroImage from "@assets/generated_images/Web_agency_hero_workspace_4ada4963.png";
 
 export function Hero() {
   const handleGetStarted = () => {
@@ -90,14 +91,15 @@ export function Hero() {
 
           {/* Hero Image */}
           <div className="lg:order-last">
-            <div className="relative">
-              <img
-                src={heroImage}
-                alt="Modern web design workspace showing professional development environment"
-                className="w-full h-auto rounded-lg shadow-xl"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent rounded-lg" />
+            <div className="relative bg-gradient-to-br from-chart-1/20 to-chart-2/20 rounded-lg p-12 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="w-24 h-24 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                  <Code className="w-12 h-12 text-primary" />
+                </div>
+                <p className="text-lg font-medium text-muted-foreground">
+                  Professional Web Solutions
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,3 +1,5 @@
+"use client"
+
 import { ServiceCard } from "./ServiceCard";
 import { Globe, Layout, ShoppingCart, Rocket } from "lucide-react";
 

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Users, Code2, Award } from "lucide-react";
-import teamImage from "@assets/generated_images/Professional_team_photo_7fcf86a6.png";
+// import teamImage from "@assets/generated_images/Professional_team_photo_7fcf86a6.png";
 
 const values = [
   {
