@@ -12,14 +12,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Moon, Sun, Menu, X, ChevronDown } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Navbar, NavBody } from "@/components/ui/resizable-nav-bar";
 
 const navigationItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Pricing", path: "/pricing" },
-  { name: "Portfolio", path: "/portfolio" },
-  { name: "Blog", path: "/blog" },
-  { name: "Contact", path: "/contact" },
+  { name: "Home", path: "/" as const },
+  { name: "About", path: "/about" as const },
+  { name: "Pricing", path: "/pricing" as const },
+  { name: "Portfolio", path: "/portfolio" as const },
+  { name: "Blog", path: "/blog" as const },
+  { name: "Contact", path: "/contact" as const },
 ];
 
 const servicesItems = [
@@ -44,180 +45,216 @@ export function Navigation() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <img
-              src="/logo_icon.svg"
-              alt="Omos Designs Logo"
-              className="h-20 w-auto object-contain"
-              // style={{ maxWidth: '200px' }}
-            />
-            <div className="font-heading font-bold text-2xl text-primary">
-              Omos Designs
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
-            {navigationItems.map((item, idx) => (
-              <React.Fragment key={item.path}>
-                <Link
-                  href={item.path}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === item.path
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
-                  data-testid={`nav-link-${item.name.toLowerCase()}`}
-                >
-                  {item.name}
+    <>
+      {/* Desktop & Tablet Navigation */}
+      <div className="hidden md:block">
+        <Navbar>
+          {(props: any) => (
+            <NavBody sidebar={props.sidebar} visible={props.visible}>
+              {/* Logo */}
+              {props.sidebar ? (
+                <Link href="/" className="flex w-full justify-center items-center mb-4">
+                  <img
+                    src="/logo_icon.svg"
+                    alt="Omos Designs Logo"
+                    className="h-28 w-auto object-contain"
+                  />
                 </Link>
-                {/* Insert Services dropdown after About */}
-                {item.name === "About" && (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        className={`text-sm font-medium transition-colors hover:text-primary flex items-center ${
-                          pathname.startsWith('/services')
-                            ? "text-primary"
-                            : "text-muted-foreground"
-                        }`}
-                        data-testid="nav-dropdown-services"
-                      >
-                        Services
-                        <ChevronDown className="w-3 h-3" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="start" className="w-48">
-                      {servicesItems.map((service) => (
-                        <DropdownMenuItem key={service.path} asChild>
-                          <Link
-                            href={service.path}
-                            className={`w-full ${
-                              pathname === service.path
-                                ? "text-primary font-medium"
-                                : "text-muted-foreground"
-                            }`}
-                            data-testid={`nav-service-${service.name.toLowerCase().replace(' ', '-')}`}
-                          >
-                            {service.name}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                )}
-              </React.Fragment>
-            ))}
-          </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              data-testid="theme-toggle"
-            >
-              {theme === "light" ? (
-                <Moon className="w-4 h-4" />
               ) : (
-                <Sun className="w-4 h-4" />
+                <Link href="/" className="flex items-center gap-2">
+                  <img
+                    src="/logo_icon.svg"
+                    alt="Omos Designs Logo"
+                    className="h-20 w-auto object-contain"
+                  />
+                  <div className="font-heading font-bold text-2xl text-primary">
+                    Omos Designs
+                  </div>
+                </Link>
               )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            <Button data-testid="cta-consultation">Get Free Consultation</Button>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              data-testid="theme-toggle-mobile"
-            >
-              {theme === "light" ? (
-                <Moon className="w-4 h-4" />
-              ) : (
-                <Sun className="w-4 h-4" />
-              )}
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMenu}
-              data-testid="mobile-menu-toggle"
-            >
-              {isMenuOpen ? (
-                <X className="w-4 h-4" />
-              ) : (
-                <Menu className="w-4 h-4" />
-              )}
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
-            <nav className="flex flex-col space-y-4">
-              {navigationItems.map((item) => (
-                <React.Fragment key={item.path}>
-                  <Link
-                    href={item.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`text-sm font-medium transition-colors hover:text-primary ${
-                      pathname === item.path
-                        ? "text-primary"
-                        : "text-muted-foreground"
-                    }`}
-                    data-testid={`nav-link-mobile-${item.name.toLowerCase()}`}
-                  >
-                    {item.name}
-                  </Link>
-                  {/* Insert Services dropdown after About */}
-                  {item.name === "About" && (
-                    <div className="space-y-2">
-                      <div className="text-sm font-medium text-muted-foreground">Services</div>
-                      <div className="pl-4 space-y-2">
-                        {servicesItems.map((service) => (
-                          <Link
-                            key={service.path}
-                            href={service.path}
-                            onClick={() => setIsMenuOpen(false)}
-                            className={`block text-sm transition-colors hover:text-primary ${
-                              pathname === service.path
-                                ? "text-primary font-medium"
-                                : "text-muted-foreground"
-                            }`}
-                            data-testid={`nav-service-mobile-${service.name.toLowerCase().replace(' ', '-')}`}
-                          >
-                            {service.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </React.Fragment>
-              ))}
-              <Button
-                className="w-full mt-4"
-                onClick={() => setIsMenuOpen(false)}
-                data-testid="cta-consultation-mobile"
+              {/* Navigation */}
+              <nav
+                className={
+                  props.sidebar
+                    ? "flex flex-col gap-3 mt-8 w-full"
+                    : "hidden md:flex items-center space-x-10"
+                }
               >
-                Get Free Consultation
-              </Button>
+                {navigationItems.map((item, idx) => (
+                  <React.Fragment key={item.path}>
+                    <Link
+                      href={item.path}
+                      className={`text-sm font-medium transition-colors hover:text-primary ${
+                        pathname === item.path
+                          ? "text-primary"
+                          : "text-muted-foreground"
+                      } ${props.sidebar ? "w-full py-2" : "px-2"}`}
+                      data-testid={`nav-link-${item.name.toLowerCase()}`}
+                    >
+                      {item.name}
+                    </Link>
+                    {/* Insert Services dropdown after About */}
+                    {item.name === "About" && (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            className={`text-sm font-medium transition-colors hover:text-primary ${
+                                      pathname.startsWith('/services')
+                                        ? "text-primary"
+                                        : "text-muted-foreground"
+                                    } ${props.sidebar ? "w-full text-left pl-0 !justify-start !items-start py-2" : "flex items-center px-2"}`}
+                            style={props.sidebar ? { justifyContent: 'flex-start', alignItems: 'flex-start', textAlign: 'left' } : undefined}
+                            data-testid="nav-dropdown-services"
+                          >
+                            <span className="w-full text-left">Services</span>
+                            <ChevronDown className="w-3 h-3 ml-2" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start" className="w-48">
+                          {servicesItems.map((service) => (
+                            <DropdownMenuItem key={service.path} asChild>
+                              <Link
+                                href={service.path}
+                                className={`w-full ${
+                                  pathname === service.path
+                                    ? "text-primary font-medium"
+                                    : "text-muted-foreground"
+                                } py-2`}
+                                data-testid={`nav-service-${service.name.toLowerCase().replace(' ', '-')}`}
+                              >
+                                {service.name}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    )}
+                  </React.Fragment>
+                ))}
+              </nav>
+
+              {/* Actions */}
+              <div
+                className={
+                  props.sidebar
+                    ? "flex flex-col items-start gap-2 mt-8 w-full"
+                    : "hidden md:flex items-center space-x-4"
+                }
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleTheme}
+                  data-testid="theme-toggle"
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-4 h-4" />
+                  ) : (
+                    <Sun className="w-4 h-4" />
+                  )}
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+                <Button className={props.sidebar ? "w-full" : ""} data-testid="cta-consultation">Get Started</Button>
+              </div>
+            </NavBody>
+          )}
+        </Navbar>
+      </div>
+      {/* Mobile Navigation */}
+      <div className="md:hidden fixed top-0 left-0 w-full z-50 bg-white dark:bg-background shadow">
+        <div className="flex items-center justify-between px-4 py-3">
+          <Link href="/" className="flex items-center justify-center">
+            <img src="/logo_icon.svg" alt="Omos Designs Logo" className="h-12 w-auto object-contain" />
+          </Link>
+          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Open navigation menu">
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </Button>
+        </div>
+        {/* Mobile menu overlay */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white dark:bg-background shadow-lg">
+            <nav className="flex flex-col items-start gap-2 p-4">
+              {/* Home */}
+              <Link
+                href="/"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
+              {/* About */}
+              <Link
+                href="/about"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              {/* Services Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`w-full text-left py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary flex items-center justify-between`}
+                    data-testid="mobile-nav-dropdown-services"
+                  >
+                    <span>Services</span>
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {servicesItems.map((service) => (
+                    <DropdownMenuItem key={service.path} asChild>
+                      <Link
+                        href={service.path}
+                        className={`w-full py-2 px-2 text-base font-medium ${pathname === service.path ? "text-primary" : "text-muted-foreground"}`}
+                        onClick={() => setIsMenuOpen(false)}
+                        data-testid={`mobile-nav-service-${service.name.toLowerCase().replace(' ', '-')}`}
+                      >
+                        {service.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* Pricing */}
+              <Link
+                href="/pricing"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+              {/* Portfolio */}
+              <Link
+                href="/portfolio"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Portfolio
+              </Link>
+              {/* Blog */}
+              <Link
+                href="/blog"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Blog
+              </Link>
+              {/* Contact */}
+              <Link
+                href="/contact"
+                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </nav>
           </div>
         )}
       </div>
-    </header>
+    </>
   );
 }

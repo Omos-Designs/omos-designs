@@ -14,7 +14,7 @@ export default function HomePage() {
       <ServicesOverview />
       
       {/* About Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-heading font-bold">
@@ -59,7 +59,7 @@ export default function HomePage() {
       </section>
 
       {/* Simple Contact Section */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-heading font-bold mb-4">
             Ready to Transform Your Business?
