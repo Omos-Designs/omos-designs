@@ -269,7 +269,7 @@ export default function WebApplicationsPage() {
               <p className="text-sm text-muted-foreground">
                 Donor management, volunteer coordination, and program tracking
               </p>
-            </div>
+            </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 🚀
@@ -356,7 +356,7 @@ export default function WebApplicationsPage() {
             </Button>
           </div>
         </div>
-      </div>
+        </div>
     </main>
   )
 }

@@ -5,12 +5,8 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, Code, Palette, Zap } from "lucide-react";
 
 export function Hero() {
-  const handleGetStarted = () => {
-    console.log('Get started button clicked');
-  };
-
-  const handleLearnMore = () => {
-    console.log('Learn more button clicked');
+  const handleNavigate = (path: string) => {
+    window.location.href = path;
   };
 
   return (
@@ -58,7 +54,7 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                onClick={handleGetStarted}
+                onClick={() => handleNavigate('/contact')}
                 className="flex items-center"
                 data-testid="hero-cta-primary"
               >
@@ -68,10 +64,10 @@ export function Hero() {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={handleLearnMore}
+                onClick={() => handleNavigate('/services')}
                 data-testid="hero-cta-secondary"
               >
-                View Our Work
+                View Services
               </Button>
             </div>
 

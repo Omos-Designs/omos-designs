@@ -2,7 +2,7 @@ import { spawn } from 'child_process';
 
 console.log('Starting NextJS development server...');
 
-const nextProcess = spawn('npx', ['next', 'dev', '--port', '5000'], {
+const nextProcess = spawn('npx', ['next', 'dev', '--port', '8000'], {
   stdio: 'inherit',
   shell: true
 });

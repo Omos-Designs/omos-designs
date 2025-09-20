@@ -7,8 +7,8 @@ const services = [
   {
     title: "Simple Website",
     description: "Perfect for small businesses just getting started online",
-    monthlyPrice: "$150/month",
-    lumpSumPrice: "$2,000",
+    monthlyPrice: "$100/month",
+    lumpSumPrice: "$1,000",
     features: [
       "1-2 page custom design",
       "Mobile responsive",
@@ -16,13 +16,14 @@ const services = [
       "Basic SEO optimization",
       "Lifetime updates & redesigns"
     ],
-    icon: <Globe className="w-8 h-8 text-chart-1" />
+    icon: <Globe className="w-8 h-8 text-chart-1" />,
+    href: "/services/simple-website"
   },
   {
     title: "Complete Website",
     description: "Multi-page solution for established businesses",
-    monthlyPrice: "$225/month",
-    lumpSumPrice: "$4,500",
+    monthlyPrice: "$200/month",
+    lumpSumPrice: "$3,000",
     features: [
       "Custom multi-page design",
       "Content management system",
@@ -32,13 +33,14 @@ const services = [
       "Lifetime updates & redesigns"
     ],
     popular: true,
-    icon: <Layout className="w-8 h-8 text-chart-2" />
+    icon: <Layout className="w-8 h-8 text-chart-2" />,
+    href: "/services/complete-website"
   },
   {
     title: "E-Commerce Website",
     description: "Complete online store with payment processing",
-    monthlyPrice: "$350/month",
-    lumpSumPrice: "$8,000",
+    monthlyPrice: "$300/month",
+    lumpSumPrice: "Custom quote",
     features: [
       "Custom product catalog",
       "Secure payment processing",
@@ -48,12 +50,13 @@ const services = [
       "Mobile-optimized checkout",
       "Lifetime updates & redesigns"
     ],
-    icon: <ShoppingCart className="w-8 h-8 text-chart-3" />
+    icon: <ShoppingCart className="w-8 h-8 text-chart-3" />,
+    href: "/services/e-commerce"
   },
   {
     title: "Web Applications",
     description: "Custom software solutions for complex business needs",
-    monthlyPrice: "$450/month",
+    monthlyPrice: "$400/month",
     lumpSumPrice: "Custom quote",
     features: [
       "Custom functionality",
@@ -63,7 +66,8 @@ const services = [
       "Scalable architecture",
       "Lifetime updates & redesigns"
     ],
-    icon: <Rocket className="w-8 h-8 text-primary" />
+    icon: <Rocket className="w-8 h-8 text-primary" />,
+    href: "/services/web-applications"
   }
 ];
 
@@ -79,6 +83,9 @@ export function ServicesOverview() {
             From simple websites to complex web applications, we provide custom-coded solutions 
             that grow with your business. No templates, no limitations.
           </p>
+          <p className="text-lg font-bold text-primary mt-4">
+            All prices are estimates and I am happy to work within your budget.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -92,6 +99,7 @@ export function ServicesOverview() {
               features={service.features}
               popular={service.popular}
               icon={service.icon}
+              href={service.href}
             />
           ))}
         </div>

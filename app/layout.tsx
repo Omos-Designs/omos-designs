@@ -3,6 +3,7 @@ import { Open_Sans, Poppins } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '../components/theme-provider'
 import { Navigation } from '../components/Navigation'
+import { Footer } from '../components/Footer'
 
 const openSans = Open_Sans({ 
   subsets: ['latin'],
@@ -59,7 +60,8 @@ export default function RootLayout({
           <Navigation />
           {children}
           
-          {/* Simple Footer */}
+          <Footer />
+          {/* Simple Footer
           <footer className="bg-muted/30 border-t mt-16">
             <div className="container mx-auto px-4 py-8">
               <div className="grid md:grid-cols-4 gap-8">
@@ -100,7 +102,7 @@ export default function RootLayout({
                 <p>&copy; 2024 Omos Designs. All rights reserved.</p>
               </div>
             </div>
-          </footer>
+          </footer> */}
         </ThemeProvider>
       </body>
     </html>

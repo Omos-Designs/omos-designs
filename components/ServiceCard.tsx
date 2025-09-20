@@ -22,11 +22,11 @@ export function ServiceCard({
   features,
   popular = false,
   icon,
+  href,
   onLearnMore
 }: ServiceCardProps) {
   const handleLearnMore = () => {
-    console.log(`Learn more about ${title} clicked`);
-    onLearnMore?.();
+    window.location.href = href;
   };
 
   return (

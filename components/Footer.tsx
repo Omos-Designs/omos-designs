@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -55,7 +57,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <span>(312) 555-0123</span>
+                <span>(773) 891-8082</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
@@ -70,13 +72,21 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
+                  {link.name === "services" ? (
                   <Link
-                    href={link.href}
+                    href="/services"
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    data-testid={`footer-link-services`}
                   >
                     {link.name}
                   </Link>
+                  ) : (
+                  <Link href={link.href}>
+                    <span className="text-sm text-muted-foreground" data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                      {link.name}
+                    </span>
+                  </Link>
+                  )}
                 </li>
               ))}
             </ul>
