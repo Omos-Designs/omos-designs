@@ -39,13 +39,7 @@ export default function SimpleWebsitePage() {
           </p>
           <div className="flex items-center justify-center gap-4 mt-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary">$150</div>
-              <div className="text-sm text-muted-foreground">per month</div>
-            </div>
-            <div className="text-muted-foreground">or</div>
-            <div className="text-center">
-              <div className="text-2xl font-semibold">$2,000</div>
-              <div className="text-sm text-muted-foreground">one-time payment</div>
+              <div className="text-3xl font-bold text-primary">$100/month</div>
             </div>
           </div>
         </div>
@@ -221,7 +215,7 @@ export default function SimpleWebsitePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle>Complete Website</CardTitle>
-                <div className="text-2xl font-bold text-primary">$225/month</div>
+                <div className="text-2xl font-bold text-primary">$200/month</div>
                 <CardDescription>Multi-page with CMS</CardDescription>
               </CardHeader>
               <CardContent>
@@ -235,7 +229,7 @@ export default function SimpleWebsitePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle>E-Commerce</CardTitle>
-                <div className="text-2xl font-bold text-primary">$325/month</div>
+                <div className="text-2xl font-bold text-primary">$300/month</div>
                 <CardDescription>Online store</CardDescription>
               </CardHeader>
               <CardContent>
