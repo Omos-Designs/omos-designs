@@ -47,8 +47,7 @@ export function Hero() {
           }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          Custom-coded websites and web applications for small businesses nationwide.
-          Specializing in Chicagoland businesses with personalized, remote service and solutions that grow with your business.
+          Custom-coded websites and web applications for small businesses, tailored to your unique needs.
         </motion.p>
         <motion.div
           initial={{
@@ -94,7 +93,7 @@ export function Hero() {
           }}
           transition={{
             duration: 0.3,
-            delay: 1.5,
+            delay: 1.2,
           }}
         >
           <Link href="/services">
@@ -138,7 +137,7 @@ export function Hero() {
           }}
           transition={{
             duration: 0.3,
-            delay: 1.7,
+            delay: 1.5,
           }}
         >
           <Card className="p-4 hover-elevate">
@@ -159,7 +158,7 @@ export function Hero() {
           }}
           transition={{
             duration: 0.3,
-            delay: 1.9,
+            delay: 1.5,
           }}
         >
           <Card className="p-4 hover-elevate">

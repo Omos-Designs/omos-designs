@@ -1,6 +1,8 @@
 import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Lock, BarChart3, Workflow, Link2, Users, Smartphone, Hospital, School, Briefcase, Factory, HeartHandshake, Rocket } from 'lucide-react'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
 
 export const metadata: Metadata = {
   title: 'Custom Web Applications - Omos Designs',
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 export default function WebApplicationsPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+  <div className="container mx-auto px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">
@@ -21,19 +23,15 @@ export default function WebApplicationsPage() {
             Transform your business operations with custom web applications featuring advanced functionality, 
             third-party integrations, and scalable architecture tailored to your unique needs.
           </p>
-          <div className="text-center mt-6">
-            <div className="text-3xl font-bold text-primary">Custom Pricing</div>
-            <div className="text-sm text-muted-foreground">Based on project scope and requirements</div>
-          </div>
         </div>
 
         {/* What We Build */}
         <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center mb-8">What We Build</h2>
+          <h2 className="text-3xl font-heading font-bold text-center mb-8">Samples of What We Build</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                🔐
+                <Lock className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Customer Portals</h3>
               <p className="text-sm text-muted-foreground">
@@ -42,7 +40,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                📊
+                <BarChart3 className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Business Dashboards</h3>
               <p className="text-sm text-muted-foreground">
@@ -51,7 +49,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                📝
+                <Workflow className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Workflow Automation</h3>
               <p className="text-sm text-muted-foreground">
@@ -60,7 +58,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                🔗
+                <Link2 className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">API Integrations</h3>
               <p className="text-sm text-muted-foreground">
@@ -69,7 +67,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                👥
+                <Users className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Team Collaboration</h3>
               <p className="text-sm text-muted-foreground">
@@ -78,7 +76,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="p-6">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                📱
+                <Smartphone className="w-7 h-7 text-primary mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Mobile-First Apps</h3>
               <p className="text-sm text-muted-foreground">
@@ -227,7 +225,7 @@ export default function WebApplicationsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🏥
+                <Hospital className="w-9 h-9 text-blue-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Healthcare</h3>
               <p className="text-sm text-muted-foreground">
@@ -236,7 +234,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🏫
+                <School className="w-9 h-9 text-green-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Education</h3>
               <p className="text-sm text-muted-foreground">
@@ -245,7 +243,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                💼
+                <Briefcase className="w-9 h-9 text-purple-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Professional Services</h3>
               <p className="text-sm text-muted-foreground">
@@ -254,7 +252,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🏭
+                <Factory className="w-9 h-9 text-orange-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Manufacturing</h3>
               <p className="text-sm text-muted-foreground">
@@ -263,7 +261,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🏛️
+                <HeartHandshake className="w-9 h-9 text-red-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Non-profits</h3>
               <p className="text-sm text-muted-foreground">
@@ -272,7 +270,7 @@ export default function WebApplicationsPage() {
             </Card>
             <Card className="text-center p-6">
               <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🚀
+                <Rocket className="w-9 h-9 text-teal-600 mx-auto" />
               </div>
               <h3 className="font-heading font-semibold mb-2">Startups</h3>
               <p className="text-sm text-muted-foreground">
@@ -340,6 +338,46 @@ export default function WebApplicationsPage() {
           </div>
         </div>
 
+        {/* FAQ - Accordion Style */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-heading font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <div className="max-w-2xl mx-auto">
+            <div className="space-y-4">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="custom">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">What is a custom web application?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    A custom web application is software built specifically for your needs, with unique features, integrations, and workflows that off-the-shelf solutions can't provide.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="process">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">How does the development process work?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    We follow a collaborative process: discovery & planning, prototyping, iterative development, and thorough testing before launch. You'll get regular demos and feedback opportunities.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="security">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">How do you ensure security and compliance?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    We implement enterprise-level security, data encryption, and compliance support for standards like GDPR and HIPAA, tailored to your industry requirements.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="integration">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Can you integrate with our existing tools?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Yes! We build APIs and integrations for CRMs, payment processors, marketing platforms, and other business software you already use.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="support">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">What kind of support is included?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    You get ongoing support for updates, bug fixes, feature enhancements, and scaling as your business grows.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </div>
+        </div>
         {/* CTA Section */}
         <div className="text-center space-y-6 bg-muted/30 rounded-lg p-8">
           <h2 className="text-2xl font-heading font-bold">Ready to Transform Your Business?</h2>
@@ -348,11 +386,8 @@ export default function WebApplicationsPage() {
             can streamline your operations and accelerate your growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8">
-              Schedule Discovery Call
-            </Button>
-            <Button size="lg" variant="outline" className="px-8">
-              Request Proposal
+            <Button size="lg" className="px-8" asChild>
+              <a href="/contact">Schedule Discovery Call</a>
             </Button>
           </div>
         </div>

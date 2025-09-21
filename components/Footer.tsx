@@ -99,7 +99,7 @@ export function Footer() {
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href}
+                    href={link.href as unknown as import('next/dist/client/components/navigation').RouteImpl<string>}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
                   >

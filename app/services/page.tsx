@@ -2,6 +2,10 @@ import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
+import ExpandableCardDemoStandard from '@/components/expandable-card-demo-standard'
+import { ProcessFlow } from '@/components/ProcessFlow'
+import { processIcons } from '@/components/process-icons'
+import { HighlightApproach } from '@/components/HighlightApproach'
 
 export const metadata: Metadata = {
   title: 'Our Services - Omos Designs',
@@ -12,14 +16,14 @@ export default function ServicesOverviewPage() {
   const services = [
     {
       title: "Simple Website",
-      price: "$150/month",
+      price: "$50+/month",
       description: "Perfect for small businesses getting started online",
       features: ["1-2 page custom design", "Mobile responsive", "Contact form", "Basic SEO"],
       href: "/services/simple-website"
     },
     {
       title: "Complete Website", 
-      price: "$225/month",
+      price: "$100+/month",
       description: "Multi-page solution for established businesses",
       features: ["Custom multi-page design", "Content management", "Advanced SEO", "Analytics integration"],
       href: "/services/complete-website",
@@ -27,7 +31,7 @@ export default function ServicesOverviewPage() {
     },
     {
       title: "E-Commerce",
-      price: "$325/month", 
+      price: "$200+/month", 
       description: "Full online store with payment processing",
       features: ["Complete online store", "Payment processing", "Inventory management", "Order management"],
       href: "/services/e-commerce"
@@ -42,13 +46,11 @@ export default function ServicesOverviewPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+  <main className="min-h-screen bg-muted/10">
+  <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
-        <div className="text-center space-y-4 mb-16">
-          <h1 className="text-4xl font-heading font-bold">
-            Professional Web Solutions
-          </h1>
+  <div className="rounded-lg p-8 space-y-6 text-center mb-16">
+          <h1 className="text-4xl font-heading font-bold">Our Services</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             From simple business websites to complex web applications, we provide custom-coded solutions 
             that grow with your business. Monthly pricing with lifetime updates included.
@@ -81,96 +83,31 @@ export default function ServicesOverviewPage() {
                   ))}
                 </ul>
                 <div className="space-y-2">
-                  <Link href={service.href}>
-                    <Button className="w-full" variant={service.popular ? "default" : "outline"}>
+                  <Button className="w-full" variant={service.popular ? "default" : "outline"} asChild>
+                    <Link href={service.href}>
                       Learn More
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us Section - Highlighted Values */}
         <div className="space-y-8 mb-16">
           <h2 className="text-3xl font-heading font-bold text-center">Why Choose Our Approach?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">💻</span>
-              </div>
-              <h3 className="font-heading font-semibold">Custom Coded</h3>
-              <p className="text-sm text-muted-foreground">
-                No templates or page builders. Every website is hand-coded for optimal performance and uniqueness.
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">🔄</span>
-              </div>
-              <h3 className="font-heading font-semibold">Lifetime Updates</h3>
-              <p className="text-sm text-muted-foreground">
-                Monthly payments include unlimited updates, redesigns, and new features as your business grows.
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                <span className="text-2xl">🤝</span>
-              </div>
-              <h3 className="font-heading font-semibold">Personal Partnership</h3>
-              <p className="text-sm text-muted-foreground">
-                Direct communication with your developer. No outsourcing, no middlemen, just personalized service.
-              </p>
-            </div>
-          </div>
+          <HighlightApproach />
         </div>
 
-        {/* Process Section */}
+        {/* Process Section - Flow UI */}
         <div className="space-y-8 mb-16">
           <h2 className="text-3xl font-heading font-bold text-center">Our Process</h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                1
-              </div>
-              <h3 className="font-heading font-semibold">Discovery</h3>
-              <p className="text-sm text-muted-foreground">
-                We learn about your business, goals, and target audience
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                2
-              </div>
-              <h3 className="font-heading font-semibold">Design</h3>
-              <p className="text-sm text-muted-foreground">
-                Custom design that reflects your brand and serves your users
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                3
-              </div>
-              <h3 className="font-heading font-semibold">Development</h3>
-              <p className="text-sm text-muted-foreground">
-                Hand-coded implementation with modern technologies
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                4
-              </div>
-              <h3 className="font-heading font-semibold">Launch & Support</h3>
-              <p className="text-sm text-muted-foreground">
-                Go live with ongoing support and lifetime updates
-              </p>
-            </div>
-          </div>
+          <ProcessFlow />
         </div>
 
         {/* CTA Section */}
-        <div className="text-center space-y-6 bg-muted/30 rounded-lg p-8">
+  <div className="rounded-lg p-8 space-y-6 text-center">
           <h2 className="text-2xl font-heading font-bold">Ready to Get Started?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Let's discuss your project and find the perfect solution for your business needs. 

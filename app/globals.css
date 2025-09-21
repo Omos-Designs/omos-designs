@@ -1,3 +1,8 @@
+@layer utilities {
+  .animate-scroll {
+    animation: var(--animate-scroll, scroll 40s forwards linear infinite);
+  }
+}
 
 @tailwind base;
 @tailwind components;
@@ -122,5 +127,16 @@
   
   .no-default-active-elevate {
     @apply active:translate-y-0 active:shadow-none;
+  }
+}
+
+
+:root {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
   }
 }

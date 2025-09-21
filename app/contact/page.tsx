@@ -1,4 +1,6 @@
+
 import { Metadata } from 'next'
+import { MapPin, Mail, Smartphone, Clock } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Omos Designs',
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+  <div className="container mx-auto px-6 md:px-12 py-16">
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">
             Get In Touch
@@ -94,7 +96,7 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  📍
+                  <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold mb-1">Service Area</h3>
@@ -109,7 +111,7 @@ export default function ContactPage() {
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  📧
+                  <Mail className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold mb-1">Email</h3>
@@ -124,7 +126,7 @@ export default function ContactPage() {
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  📱
+                  <Smartphone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold mb-1">Consultation</h3>
@@ -139,7 +141,7 @@ export default function ContactPage() {
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  ⏰
+                  <Clock className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold mb-1">Business Hours</h3>
@@ -154,15 +156,6 @@ export default function ContactPage() {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-muted/30 rounded-lg p-6 space-y-4">
-              <h3 className="font-heading font-semibold">Ready to Get Started?</h3>
-              <p className="text-sm text-muted-foreground">
-                Schedule a free consultation to discuss your project requirements and see how we can help your business grow.
-              </p>
-              <button className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                Schedule Free Consultation
-              </button>
-            </div>
           </div>
         </div>
       </div>

@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
+import { Building, Users, Zap, DollarSign, Briefcase, TrendingUp, BarChart3, MailIcon } from 'lucide-react'
+import { IconSocial } from '@tabler/icons-react'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
 
 export const metadata: Metadata = {
   title: 'Complete Website Package - Omos Designs',
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
 export default function CompleteWebsitePage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+  <div className="container mx-auto px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <div className="inline-block bg-primary/10 text-primary text-sm px-3 py-1 rounded-full font-medium mb-2">
@@ -25,17 +28,6 @@ export default function CompleteWebsitePage() {
             A comprehensive multi-page solution for established businesses ready to maximize 
             their online presence with advanced features and content management.
           </p>
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">$225</div>
-              <div className="text-sm text-muted-foreground">per month</div>
-            </div>
-            <div className="text-muted-foreground">or</div>
-            <div className="text-center">
-              <div className="text-2xl font-semibold">$4,500</div>
-              <div className="text-sm text-muted-foreground">one-time payment</div>
-            </div>
-          </div>
         </div>
 
         {/* What's Included */}
@@ -100,48 +92,60 @@ export default function CompleteWebsitePage() {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="max-w-xl mx-auto space-y-4">
             <h2 className="text-3xl font-heading font-bold">Perfect For</h2>
-            <div className="space-y-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Established Businesses</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Companies with multiple services/products that need comprehensive online presence
-                  </p>
-                </CardContent>
+            <div className="space-y-3">
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <Building className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                  <div>
+                    <CardTitle className="text-base">Established Businesses</CardTitle>
+                    <CardContent className="p-0">
+                      <p className="text-xs text-muted-foreground">
+                        Companies with multiple services/products that need comprehensive online presence
+                      </p>
+                    </CardContent>
+                  </div>
+                </div>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Content Marketers</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Businesses that regularly publish blogs, case studies, and thought leadership content
-                  </p>
-                </CardContent>
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <Users className="w-6 h-6 text-green-500 flex-shrink-0" />
+                  <div>
+                    <CardTitle className="text-base">Content Marketers</CardTitle>
+                    <CardContent className="p-0">
+                      <p className="text-xs text-muted-foreground">
+                        Businesses that regularly publish blogs, case studies, and thought leadership content
+                      </p>
+                    </CardContent>
+                  </div>
+                </div>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Growing Companies</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Organizations ready to scale their digital marketing and lead generation efforts
-                  </p>
-                </CardContent>
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                  <div>
+                    <CardTitle className="text-base">Growing Companies</CardTitle>
+                    <CardContent className="p-0">
+                      <p className="text-xs text-muted-foreground">
+                        Organizations ready to scale their digital marketing and lead generation efforts
+                      </p>
+                    </CardContent>
+                  </div>
+                </div>
               </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Professional Services</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Law firms, consulting companies, agencies that need to showcase expertise and credibility
-                  </p>
-                </CardContent>
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <Briefcase className="w-6 h-6 text-purple-500 flex-shrink-0" />
+                  <div>
+                    <CardTitle className="text-base">Professional Services</CardTitle>
+                    <CardContent className="p-0">
+                      <p className="text-xs text-muted-foreground">
+                        Law firms, consulting companies, agencies that need to showcase expertise and credibility
+                      </p>
+                    </CardContent>
+                  </div>
+                </div>
               </Card>
             </div>
           </div>
@@ -153,7 +157,7 @@ export default function CompleteWebsitePage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                📊
+                <BarChart3 className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Analytics Dashboard</h3>
               <p className="text-sm text-muted-foreground">
@@ -162,7 +166,7 @@ export default function CompleteWebsitePage() {
             </div>
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                📝
+                <Users className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Blog System</h3>
               <p className="text-sm text-muted-foreground">
@@ -171,7 +175,7 @@ export default function CompleteWebsitePage() {
             </div>
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                🎨
+                <Zap className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Brand Consistency</h3>
               <p className="text-sm text-muted-foreground">
@@ -180,7 +184,7 @@ export default function CompleteWebsitePage() {
             </div>
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                🔍
+                <TrendingUp className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Search Optimization</h3>
               <p className="text-sm text-muted-foreground">
@@ -189,7 +193,7 @@ export default function CompleteWebsitePage() {
             </div>
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                📧
+                <MailIcon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Email Integration</h3>
               <p className="text-sm text-muted-foreground">
@@ -198,72 +202,11 @@ export default function CompleteWebsitePage() {
             </div>
             <div className="text-center space-y-4 p-6 bg-card rounded-lg border">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto">
-                📱
+                <IconSocial className="w-7 h-7 text-primary" />
               </div>
               <h3 className="font-heading font-semibold">Social Media Ready</h3>
               <p className="text-sm text-muted-foreground">
                 Optimized sharing capabilities and social media integration for maximum reach
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Typical Timeline */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center mb-8">Project Timeline</h2>
-          <div className="grid md:grid-cols-6 gap-4">
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                1
-              </div>
-              <h3 className="font-heading font-semibold">Week 1-2</h3>
-              <p className="text-sm text-muted-foreground">
-                Discovery & content strategy
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                2
-              </div>
-              <h3 className="font-heading font-semibold">Week 3-4</h3>
-              <p className="text-sm text-muted-foreground">
-                Design system & wireframes
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                3
-              </div>
-              <h3 className="font-heading font-semibold">Week 5-6</h3>
-              <p className="text-sm text-muted-foreground">
-                Homepage & key pages
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                4
-              </div>
-              <h3 className="font-heading font-semibold">Week 7-8</h3>
-              <p className="text-sm text-muted-foreground">
-                CMS & content entry
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                5
-              </div>
-              <h3 className="font-heading font-semibold">Week 9-10</h3>
-              <p className="text-sm text-muted-foreground">
-                Testing & optimization
-              </p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto font-bold">
-                6
-              </div>
-              <h3 className="font-heading font-semibold">Week 11-12</h3>
-              <p className="text-sm text-muted-foreground">
-                Launch & training
               </p>
             </div>
           </div>
@@ -276,7 +219,7 @@ export default function CompleteWebsitePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle>Simple Website</CardTitle>
-                <div className="text-2xl font-bold text-primary">$150/month</div>
+                <div className="text-2xl font-bold text-primary">$50+/month</div>
                 <CardDescription>1-2 pages, basic features</CardDescription>
               </CardHeader>
               <CardContent>
@@ -290,7 +233,7 @@ export default function CompleteWebsitePage() {
             <Card className="border-2 border-primary">
               <CardHeader className="text-center">
                 <CardTitle>Complete Website</CardTitle>
-                <div className="text-2xl font-bold text-primary">$225/month</div>
+                <div className="text-2xl font-bold text-primary">$100+/month</div>
                 <CardDescription>Multi-page with CMS</CardDescription>
               </CardHeader>
               <CardContent>
@@ -302,7 +245,7 @@ export default function CompleteWebsitePage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle>E-Commerce</CardTitle>
-                <div className="text-2xl font-bold text-primary">$325/month</div>
+                <div className="text-2xl font-bold text-primary">$200/month</div>
                 <CardDescription>Online store</CardDescription>
               </CardHeader>
               <CardContent>
@@ -316,40 +259,46 @@ export default function CompleteWebsitePage() {
           </div>
         </div>
 
-        {/* Success Stories Preview */}
+        {/* FAQ - Accordion Style */}
         <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center mb-8">Perfect for Growing Businesses</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="text-center p-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🏢
-              </div>
-              <h3 className="font-heading font-semibold mb-2">Professional Services</h3>
-              <p className="text-sm text-muted-foreground">
-                "Our complete website helped us showcase our expertise and attract higher-value clients."
-              </p>
-            </Card>
-            <Card className="text-center p-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🌱
-              </div>
-              <h3 className="font-heading font-semibold mb-2">Growing Startups</h3>
-              <p className="text-sm text-muted-foreground">
-                "The CMS made it easy to publish content and our SEO rankings improved dramatically."
-              </p>
-            </Card>
-            <Card className="text-center p-6">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                🎯
-              </div>
-              <h3 className="font-heading font-semibold mb-2">Marketing Focused</h3>
-              <p className="text-sm text-muted-foreground">
-                "Analytics integration helped us understand our audience and optimize our conversion rates."
-              </p>
-            </Card>
+          <h2 className="text-3xl font-heading font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <div className="max-w-2xl mx-auto">
+            <div className="space-y-4">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="cms">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I update my website content myself?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Yes! The included content management system (CMS) lets you easily update text, images, blog posts, and add new pages without any coding required.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="seo">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">What advanced SEO features are included?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Your site will have XML sitemaps, schema markup, social media tags, and SEO-optimized content structure to help you rank higher and get found online.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="analytics">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">How does analytics integration work?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    We set up Google Analytics so you can track visitor behavior, popular pages, and conversion metrics from a user-friendly dashboard.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="email">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Is professional domain & setup included?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Yes, we can manage your domain & create custom email addresses using your domain (e.g., info@yourbusiness.com) using a provider of your choosing (Microsoft Office, Google Workspace, etc.) and can integrate with newsletter platforms.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="support">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">What kind of support do I get?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    You get ongoing support for updates, redesigns, security patches, and performance improvements—your site grows with your business.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
           </div>
         </div>
-
         {/* CTA Section */}
         <div className="text-center space-y-6 bg-muted/30 rounded-lg p-8">
           <h2 className="text-2xl font-heading font-bold">Ready for Your Complete Website?</h2>
@@ -358,11 +307,10 @@ export default function CompleteWebsitePage() {
             Let's discuss your goals and create a solution that drives results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8">
-              Start Your Project
-            </Button>
-            <Button size="lg" variant="outline" className="px-8">
-              Schedule Consultation
+            <Button size="lg" className="px-8" asChild>
+              <Link href="/contact">
+                Get Started
+              </Link>
             </Button>
           </div>
         </div>

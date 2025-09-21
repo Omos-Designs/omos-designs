@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -18,9 +18,14 @@ const navigationItems = [
   { name: "Home", path: "/" as const },
   { name: "About", path: "/about" as const },
   { name: "Pricing", path: "/pricing" as const },
-  { name: "Portfolio", path: "/portfolio" as const },
-  { name: "Blog", path: "/blog" as const },
   { name: "Contact", path: "/contact" as const },
+];
+
+// About dropdown items (must be outside navigationItems array)
+const aboutDropdownItems = [
+  { name: "Who We Are", path: "/about" as const },
+  { name: "Portfolio", path: "/portfolio" as const },
+  { name: "Blog", path: "/blog" as const }
 ];
 
 const servicesItems = [
@@ -47,7 +52,7 @@ export function Navigation() {
   return (
     <>
       {/* Desktop & Tablet Navigation */}
-      <div className="hidden md:block">
+      <div className="hidden md:block bg-muted/10">
         <Navbar>
           {(props: any) => (
             <NavBody sidebar={props.sidebar} visible={props.visible}>
@@ -83,18 +88,56 @@ export function Navigation() {
               >
                 {navigationItems.map((item, idx) => (
                   <React.Fragment key={item.path}>
-                    <Link
-                      href={item.path}
-                      className={`text-sm font-medium transition-colors hover:text-primary ${
-                        pathname === item.path
-                          ? "text-primary"
-                          : "text-muted-foreground"
-                      } ${props.sidebar ? "w-full py-2" : "px-2"}`}
-                      data-testid={`nav-link-${item.name.toLowerCase()}`}
-                    >
-                      {item.name}
-                    </Link>
-                    {/* Insert Services dropdown after About */}
+                    {/* About dropdown replaces About link */}
+                    {item.name === "About" ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            className={`text-sm font-medium transition-colors hover:text-primary ${
+                              ["/about","/portfolio","/blog"].includes(pathname)
+                                ? "text-primary"
+                                : "text-muted-foreground"
+                            } ${props.sidebar ? "w-full text-left pl-0 !justify-start !items-start py-2" : "flex items-center px-2"}`}
+                            style={props.sidebar ? { justifyContent: 'flex-start', alignItems: 'flex-start', textAlign: 'left' } : undefined}
+                            data-testid="nav-dropdown-about"
+                          >
+                            <span className="w-full text-left">About</span>
+                            <ChevronDown className="w-3 h-3 ml-2" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start" className="w-48">
+                          {aboutDropdownItems.map((aboutItem) => (
+                            <DropdownMenuItem key={aboutItem.path} asChild>
+                              <Link
+                                href={aboutItem.path}
+                                className={`w-full ${
+                                  pathname === aboutItem.path
+                                    ? "text-primary font-medium"
+                                    : "text-muted-foreground"
+                                } py-2`}
+                                data-testid={`nav-about-${aboutItem.name.toLowerCase().replace(/ /g, '-')}`}
+                              >
+                                {aboutItem.name}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link
+                        href={item.path}
+                        className={`text-sm font-medium transition-colors hover:text-primary ${
+                          pathname === item.path
+                            ? "text-primary"
+                            : "text-muted-foreground"
+                        } ${props.sidebar ? "w-full py-2" : "px-2"}`}
+                        data-testid={`nav-link-${item.name.toLowerCase()}`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                    {/* Insert Services dropdown after About dropdown */}
                     {item.name === "About" && (
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -227,22 +270,33 @@ export function Navigation() {
               >
                 Pricing
               </Link>
-              {/* Portfolio */}
-              <Link
-                href="/portfolio"
-                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Portfolio
-              </Link>
-              {/* Blog */}
-              <Link
-                href="/blog"
-                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
+              {/* About Dropdown (mobile) */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`w-full text-left py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary flex items-center justify-between`}
+                    data-testid="mobile-nav-dropdown-about"
+                  >
+                    <span>About</span>
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {aboutDropdownItems.map((aboutItem) => (
+                    <DropdownMenuItem key={aboutItem.path} asChild>
+                      <Link
+                        href={aboutItem.path}
+                        className={`w-full py-2 px-2 text-base font-medium ${pathname === aboutItem.path ? "text-primary" : "text-muted-foreground"}`}
+                        onClick={() => setIsMenuOpen(false)}
+                        data-testid={`mobile-nav-about-${aboutItem.name.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        {aboutItem.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               {/* Contact */}
               <Link
                 href="/contact"

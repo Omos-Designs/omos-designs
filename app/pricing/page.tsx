@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
+import Link from 'next/link'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -8,8 +11,8 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center space-y-4 mb-16">
+  <div className="container mx-auto px-8 py-16">
+  <div className="text-center space-y-4 mb-8">
           <h1 className="text-4xl font-heading font-bold">
             Simple, Transparent Pricing
           </h1>
@@ -17,22 +20,25 @@ export default function PricingPage() {
             Monthly payments with lifetime updates. No hidden fees, no surprises. 
             Choose the plan that fits your business needs.
           </p>
+          <div className="text-center text-base text-muted-foreground font-bold mt-6 max-w-2xl mx-auto">
+            Pricing shown is just an estimate—let's talk about your goals and budget, and we'll work together to create a website solution that fits. No matter your starting point, we'll help make it happen.
+          </div>
         </div>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {/* Use min-h-full and flex-col for equal height, and flex-1 + flex for bottom alignment */}
           {/* Simple Website */}
-          <div className="bg-card border rounded-lg p-6 space-y-6">
+          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">Simple Website</h3>
               <p className="text-sm text-muted-foreground">Perfect for small businesses getting started</p>
             </div>
-            <div className="text-center space-y-1">
-              <div className="text-3xl font-bold text-primary">$150</div>
+            <div className="text-center space-y-1 mt-4">
+              <div className="text-3xl font-bold text-primary">$50+</div>
               <div className="text-sm text-muted-foreground">per month</div>
-              <div className="text-xs text-muted-foreground">or $2,000 lump sum</div>
             </div>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mt-6">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 1-2 page custom design
@@ -49,18 +55,15 @@ export default function PricingPage() {
                 <span className="text-green-500">✓</span>
                 Basic SEO optimization
               </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span>
-                Lifetime updates & redesigns
-              </li>
             </ul>
-            <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-              Get Started
-            </button>
+            <div className="flex-1" />
+              <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+                <Link href="/contact">Get Started</Link>
+              </Button>
           </div>
 
           {/* Complete Website */}
-          <div className="bg-card border rounded-lg p-6 space-y-6 relative">
+          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between relative">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
               <span className="bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
                 Most Popular
@@ -70,12 +73,11 @@ export default function PricingPage() {
               <h3 className="text-xl font-heading font-bold">Complete Website</h3>
               <p className="text-sm text-muted-foreground">Multi-page solution for established businesses</p>
             </div>
-            <div className="text-center space-y-1">
-              <div className="text-3xl font-bold text-primary">$225</div>
+            <div className="text-center space-y-1 mt-4">
+              <div className="text-3xl font-bold text-primary">$100+</div>
               <div className="text-sm text-muted-foreground">per month</div>
-              <div className="text-xs text-muted-foreground">or $4,500 lump sum</div>
             </div>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mt-6">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Custom multi-page design
@@ -86,38 +88,30 @@ export default function PricingPage() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
-                Advanced SEO features
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span>
                 Google Analytics integration
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
-                Professional email setup
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span>
-                Lifetime updates & redesigns
+                Professional domain & email setup
               </li>
             </ul>
-            <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-              Get Started
-            </button>
+            <div className="flex-1" />
+            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+              <Link href="/contact">Get Started</Link>
+            </Button>
           </div>
 
           {/* E-Commerce */}
-          <div className="bg-card border rounded-lg p-6 space-y-6">
+          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">E-Commerce</h3>
               <p className="text-sm text-muted-foreground">Full online store with payment processing</p>
             </div>
-            <div className="text-center space-y-1">
-              <div className="text-3xl font-bold text-primary">$325</div>
+            <div className="text-center space-y-1 mt-4">
+              <div className="text-3xl font-bold text-primary">$200+</div>
               <div className="text-sm text-muted-foreground">per month</div>
-              <div className="text-xs text-muted-foreground">or $6,500 lump sum</div>
             </div>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mt-6">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Complete online store
@@ -143,23 +137,22 @@ export default function PricingPage() {
                 All Complete Website features
               </li>
             </ul>
-            <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-              Get Started
-            </button>
+            <div className="flex-1" />
+            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+              <Link href="/contact">Get Started</Link>
+            </Button>
           </div>
 
           {/* Web Application */}
-          <div className="bg-card border rounded-lg p-6 space-y-6">
+          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">Web Application</h3>
               <p className="text-sm text-muted-foreground">Custom functionality and integrations</p>
             </div>
-            <div className="text-center space-y-1">
-              <div className="text-3xl font-bold text-primary">Custom</div>
-              <div className="text-sm text-muted-foreground">pricing</div>
-              <div className="text-xs text-muted-foreground">based on requirements</div>
+            <div className="text-center space-y-1 mt-4">
+              <div className="text-3xl font-bold text-primary">Custom Pricing</div>
             </div>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm mt-6">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Custom functionality
@@ -185,43 +178,48 @@ export default function PricingPage() {
                 Scalable architecture
               </li>
             </ul>
-            <button className="w-full border border-primary text-primary py-2 rounded-lg font-medium hover:bg-primary/5 transition-colors">
-              Request Quote
-            </button>
+            <div className="flex-1" />
+            <Button className="w-full border border-primary text-primary py-2 rounded-lg font-medium hover:bg-primary/5 transition-colors mt-4" asChild>
+              <Link href="/contact">Request Quote</Link>
+            </Button>
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="space-y-8">
-          <h2 className="text-3xl font-heading font-bold text-center">Frequently Asked Questions</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <h3 className="font-heading font-semibold">Why monthly payments?</h3>
-              <p className="text-sm text-muted-foreground">
-                Monthly payments make professional websites accessible to small businesses. Plus, you get lifetime updates 
-                and redesigns, ensuring your site stays current with technology and design trends.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="font-heading font-semibold">What's included in lifetime updates?</h3>
-              <p className="text-sm text-muted-foreground">
-                Security updates, content changes, design refresh, new features, and complete redesigns when needed. 
-                Your site will never become outdated.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="font-heading font-semibold">Can I switch plans later?</h3>
-              <p className="text-sm text-muted-foreground">
-                Absolutely! As your business grows, you can upgrade to add new features and functionality. 
-                We'll work with you to ensure a smooth transition.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h3 className="font-heading font-semibold">Do you offer lump sum pricing?</h3>
-              <p className="text-sm text-muted-foreground">
-                Yes, we offer lump sum options for businesses that prefer upfront payment. However, 
-                you'll still receive all the lifetime update benefits.
-              </p>
+        {/* FAQ Section - Accordion Style */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-heading font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <div className="max-w-2xl mx-auto">
+            <div className="space-y-4">
+              <Accordion type="single" collapsible>
+                <AccordionItem value="monthly">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Why monthly payments?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Monthly payments make professional websites accessible to small businesses. Plus, you get lifetime updates 
+                    and redesigns, ensuring your site stays current with technology and design trends.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="updates">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">What's included in lifetime updates?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Security updates, content changes, design refresh, new features, and complete redesigns when needed. 
+                    Your site will never become outdated.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="switch">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I switch plans later?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Absolutely! As your business grows, you can upgrade to add new features and functionality. 
+                    We'll work with you to ensure a smooth transition.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="lump">
+                  <AccordionTrigger className="text-lg font-heading font-semibold">Do you offer lump sum pricing?</AccordionTrigger>
+                  <AccordionContent className="text-sm text-muted-foreground">
+                    Yes, we offer lump sum options for businesses that prefer upfront payment. However, 
+                    you'll still receive all the lifetime update benefits.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </div>
@@ -232,9 +230,9 @@ export default function PricingPage() {
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Schedule a free consultation to discuss your project and find the perfect plan for your business.
           </p>
-          <button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-            Schedule Free Consultation
-          </button>
+            <Button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors" asChild>
+              <Link href="/contact">Schedule Discovery Call</Link>
+            </Button>
         </div>
       </div>
     </main>

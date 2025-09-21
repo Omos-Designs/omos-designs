@@ -11,6 +11,7 @@ interface ServiceCardProps {
   features: string[];
   popular?: boolean;
   icon: React.ReactNode;
+  href: string;
   onLearnMore?: () => void;
 }
 
