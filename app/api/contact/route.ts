@@ -28,15 +28,21 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey)
 
-    const { firstName, lastName, email, company, projectType, message } = data
-    if (!email || !firstName || !lastName || !message) {
-      return NextResponse.json({ ok: false, error: "Missing required fields" }, { status: 400 })
+    const { name, email, company, projectType, message } = data
+    if (!email) {
+      return NextResponse.json({ ok: false, error: "Please include your email" }, { status: 400 })
+    }
+    if (!name) {
+      return NextResponse.json({ ok: false, error: "Please include your name" }, { status: 400 })
+    }
+    if (projectType === "") {
+      return NextResponse.json({ ok: false, error: "Please select a project type (Just click `Not sure yet` if that's the case)" }, { status: 400 })
     }
 
-    const subject = `[Omos Designs] New inquiry from ${firstName} ${lastName}`
+    const subject = `[Omos Designs] New inquiry from ${name}`
     const html = `
       <h2>New Contact Inquiry</h2>
-      <p><b>Name:</b> ${firstName} ${lastName}</p>
+      <p><b>Name:</b> ${name}</p>
       <p><b>Email:</b> ${email}</p>
       <p><b>Company:</b> ${company || "-"}</p>
       <p><b>Project Type:</b> ${projectType || "-"}</p>

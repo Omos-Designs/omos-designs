@@ -40,6 +40,11 @@ export function Navigation() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
@@ -186,20 +191,24 @@ export function Navigation() {
                     : "hidden md:flex items-center space-x-4"
                 }
               >
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={toggleTheme}
-                  data-testid="theme-toggle"
-                >
-                  {theme === "light" ? (
-                    <Moon className="w-4 h-4" />
-                  ) : (
-                    <Sun className="w-4 h-4" />
-                  )}
-                  <span className="sr-only">Toggle theme</span>
-                </Button>
-                <Button className={props.sidebar ? "w-full" : ""} data-testid="cta-consultation">Get Started</Button>
+                {mounted && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={toggleTheme}
+                    data-testid="theme-toggle"
+                  >
+                    {theme === "light" ? (
+                      <Moon className="w-4 h-4" />
+                    ) : (
+                      <Sun className="w-4 h-4" />
+                    )}
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                )}
+                <Link href="/contact" className={props.sidebar ? "w-full" : ""} data-testid="cta-consultation">
+                  <Button className="w-full">Get Started</Button>
+                </Link>
               </div>
             </NavBody>
           )}

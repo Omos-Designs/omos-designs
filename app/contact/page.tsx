@@ -25,12 +25,9 @@ export default function ContactPage() {
     setLoading(true);
     setError("");
     setSuccess(false);
-    // Split name into first/last
-    const [firstName, ...rest] = form.name.trim().split(" ");
-    const lastName = rest.join(" ");
+    // Send name as entered, no splitting
     const payload = {
-      firstName,
-      lastName,
+      name: form.name,
       email: form.email,
       company: form.company,
       projectType: form.projectType,
@@ -120,10 +117,10 @@ export default function ContactPage() {
                     onChange={handleChange}
                   >
                     <option value="">Select a service</option>
-                    <option value="simple">Simple Website</option>
-                    <option value="complete">Complete Website</option>
+                    <option value="simple-website">Simple Website</option>
+                    <option value="complete-website">Complete Website</option>
                     <option value="ecommerce">E-Commerce</option>
-                    <option value="webapp">Web Application</option>
+                    <option value="web-application">Web Application</option>
                     <option value="unsure">Not sure yet</option>
                   </select>
                 </div>
