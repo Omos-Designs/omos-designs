@@ -124,14 +124,14 @@ export function Footer() {
           
           <div className="flex space-x-4 text-sm">
             <Link 
-              href={"/privacy" as const} 
+              href={"/private-policy" as const} 
               className="text-muted-foreground hover:text-primary transition-colors"
               data-testid="footer-privacy"
             >
               Privacy Policy
             </Link>
             <Link 
-              href={"/terms" as const} 
+              href={"/terms-of-service" as const} 
               className="text-muted-foreground hover:text-primary transition-colors"
               data-testid="footer-terms"
             >
