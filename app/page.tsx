@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { Hero } from "@/components/Hero"
-import { ServicesOverview } from "@/components/ServicesOverview"
 import { AboutSection } from '@/components/AboutSection'
 import { ServicesPricingOverview } from '@/components/PricingSummary'
 

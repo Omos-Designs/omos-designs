@@ -74,7 +74,7 @@ export function ServicesPricingOverview() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {pricingTiers.map((tier, index) => (
-            <Link href={`${tier.link}`} key={index} className="group">
+            <a href={tier.link} key={index} className="group">
               <Card className="text-center hover-elevate transition-all duration-300 cursor-pointer group relative">
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -102,7 +102,7 @@ export function ServicesPricingOverview() {
                   </div>
                 </CardContent>
               </Card>
-            </Link>
+            </a>
           ))}
         </div>
 

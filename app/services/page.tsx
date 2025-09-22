@@ -84,9 +84,9 @@ export default function ServicesOverviewPage() {
                 </ul>
                 <div className="space-y-2">
                   <Button className="w-full" variant={service.popular ? "default" : "outline"} asChild>
-                    <Link href={service.href}>
+                    <a href={service.href}>
                       Learn More
-                    </Link>
+                    </a>
                   </Button>
                 </div>
               </CardContent>
