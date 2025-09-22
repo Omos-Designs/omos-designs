@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function WebApplicationsPage() {
   return (
     <main className="min-h-screen bg-background">
-  <div className="container mx-auto px-8 py-16">
+  <div className="container mx-auto px-12 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">

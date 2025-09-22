@@ -56,7 +56,7 @@ export function AboutSection() {
               onClick={handleLearnMore} 
               data-testid="about-learn-more"
               size="default"
-              className="mt-2 px-5 py-2 text-base font-medium rounded left-0"
+              className="mt-2 px-5 py-2 text-base font-medium rounded-lg left-0"
               style={{ alignSelf: 'flex-start' }}
             >
               Learn More

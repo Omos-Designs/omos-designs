@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main className="min-h-screen bg-background">
-  <div className="container mx-auto px-8 py-16">
+  <div className="container mx-auto px-12 py-16">
   <div className="text-center space-y-4 mb-8">
           <h1 className="text-4xl font-heading font-bold">
             Simple, Transparent Pricing

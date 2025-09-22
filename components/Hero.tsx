@@ -8,7 +8,7 @@ import Link from "next/link";
  
 export function Hero() {
   return (
-    <section className="bg-muted/10 pt-8 pb-16">
+    <section className="bg-muted/10 pt-8 pb-16 px-12">
     <div className="relative mx-auto my-2 flex max-w-7xl flex-col items-center justify-center">
       <div className="px-4 py-8 md:py-14">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">

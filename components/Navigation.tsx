@@ -51,8 +51,8 @@ export function Navigation() {
 
   return (
     <>
-      {/* Desktop & Tablet Navigation */}
-      <div className="hidden md:block bg-muted/10">
+  {/* Desktop Navigation (Floating/Sidebar only on xl and up) */}
+  <div className="hidden xl:block bg-muted/10">
         <Navbar>
           {(props: any) => (
             <NavBody sidebar={props.sidebar} visible={props.visible}>
@@ -205,8 +205,8 @@ export function Navigation() {
           )}
         </Navbar>
       </div>
-      {/* Mobile Navigation */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-50 bg-white dark:bg-background shadow">
+  {/* Mobile, Tablet & Large Screens (Header) */}
+  <div className="xl:hidden fixed top-0 left-0 w-full z-50 bg-white dark:bg-background shadow">
         <div className="flex items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center justify-center">
             <img src="/logo_icon.svg" alt="Omos Designs Logo" className="h-12 w-auto object-contain" />
@@ -227,14 +227,33 @@ export function Navigation() {
               >
                 Home
               </Link>
-              {/* About */}
-              <Link
-                href="/about"
-                className="w-full py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
+              {/* About Dropdown (mobile) */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className={`w-full text-left py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary flex items-center justify-between`}
+                    data-testid="mobile-nav-dropdown-about"
+                  >
+                    <span>About</span>
+                    <ChevronDown className="w-4 h-4 ml-2" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-48">
+                  {aboutDropdownItems.map((aboutItem) => (
+                    <DropdownMenuItem key={aboutItem.path} asChild>
+                      <Link
+                        href={aboutItem.path}
+                        className={`w-full py-2 px-2 text-base font-medium ${pathname === aboutItem.path ? "text-primary" : "text-muted-foreground"}`}
+                        onClick={() => setIsMenuOpen(false)}
+                        data-testid={`mobile-nav-about-${aboutItem.name.toLowerCase().replace(/ /g, '-')}`}
+                      >
+                        {aboutItem.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
               {/* Services Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -270,33 +289,6 @@ export function Navigation() {
               >
                 Pricing
               </Link>
-              {/* About Dropdown (mobile) */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className={`w-full text-left py-2 px-2 text-base font-medium text-muted-foreground hover:text-primary flex items-center justify-between`}
-                    data-testid="mobile-nav-dropdown-about"
-                  >
-                    <span>About</span>
-                    <ChevronDown className="w-4 h-4 ml-2" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48">
-                  {aboutDropdownItems.map((aboutItem) => (
-                    <DropdownMenuItem key={aboutItem.path} asChild>
-                      <Link
-                        href={aboutItem.path}
-                        className={`w-full py-2 px-2 text-base font-medium ${pathname === aboutItem.path ? "text-primary" : "text-muted-foreground"}`}
-                        onClick={() => setIsMenuOpen(false)}
-                        data-testid={`mobile-nav-about-${aboutItem.name.toLowerCase().replace(/ /g, '-')}`}
-                      >
-                        {aboutItem.name}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
               {/* Contact */}
               <Link
                 href="/contact"

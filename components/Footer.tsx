@@ -7,22 +7,22 @@ import { MapPin, Phone, Mail, Heart } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { name: "Simple Website", href: "/services#simple" },
-    { name: "Complete Website", href: "/services#complete" },
-    { name: "E-Commerce", href: "/services#ecommerce" },
-    { name: "Web Applications", href: "/services#webapp" },
+  { name: "Simple Website", href: "/services#simple" as const },
+  { name: "Complete Website", href: "/services#complete" as const },
+  { name: "E-Commerce", href: "/services#ecommerce" as const },
+  { name: "Web Applications", href: "/services#webapp" as const },
   ],
   company: [
-    { name: "About Us", href: "/about" },
-    { name: "Our Process", href: "/about#process" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Contact", href: "/contact" },
+  { name: "About Us", href: "/about" as const },
+  { name: "Our Process", href: "/about#process" as const },
+  { name: "Pricing", href: "/pricing" as const },
+  { name: "Contact", href: "/contact" as const },
   ],
   resources: [
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/blog" },
-    { name: "FAQ", href: "/faq" },
+  { name: "Portfolio", href: "/portfolio" as const },
+  { name: "Case Studies", href: "/case-studies" as const },
+  { name: "Blog", href: "/blog" as const },
+  { name: "FAQ", href: "/faq" as const },
   ]
 };
 
@@ -56,18 +56,17 @@ export function Footer() {
                 <span>Remote work, Chicagoland specialty</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground">
-                <Phone className="w-4 h-4" />
-                <span>(773) 891-8082</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
                 <span>hello@omosdesigns.com</span>
               </div>
             </div>
           </div>
 
+          {/* Spacer for gap on large screens */}
+          <div className="hidden lg:block" />
+
           {/* Services */}
-          <div>
+          <div className="lg:text-right">
             <h4 className="font-heading font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               {footerLinks.services.map((link) => (
@@ -82,7 +81,7 @@ export function Footer() {
                   </Link>
                   ) : (
                   <Link href={link.href}>
-                    <span className="text-sm text-muted-foreground" data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <span className="text-sm text-muted-foreground" data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}> 
                       {link.name}
                     </span>
                   </Link>
@@ -93,13 +92,13 @@ export function Footer() {
           </div>
 
           {/* Company */}
-          <div>
+          <div className="lg:text-right">
             <h4 className="font-heading font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
-                    href={link.href as unknown as import('next/dist/client/components/navigation').RouteImpl<string>}
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     data-testid={`footer-link-${link.name.toLowerCase().replace(/\s+/g, '-')}`}
                   >
@@ -109,30 +108,8 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="font-heading font-semibold mb-4">Stay Updated</h4>
-            <p className="text-sm text-muted-foreground mb-4">
-              Get web design tips and business insights delivered monthly.
-            </p>
-            <div className="space-y-3">
-              <Button 
-                onClick={handleNewsletterSignup} 
-                className="w-full"
-                data-testid="newsletter-signup"
-              >
-                Join Newsletter
-              </Button>
-              <p className="text-xs text-muted-foreground">
-                No spam. Unsubscribe anytime.
-              </p>
-            </div>
-          </div>
         </div>
-
         <Separator className="my-8" />
-
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div className="text-sm text-muted-foreground">
@@ -147,14 +124,14 @@ export function Footer() {
           
           <div className="flex space-x-4 text-sm">
             <Link 
-              href="/privacy" 
+              href={"/privacy" as const} 
               className="text-muted-foreground hover:text-primary transition-colors"
               data-testid="footer-privacy"
             >
               Privacy Policy
             </Link>
             <Link 
-              href="/terms" 
+              href={"/terms" as const} 
               className="text-muted-foreground hover:text-primary transition-colors"
               data-testid="footer-terms"
             >
