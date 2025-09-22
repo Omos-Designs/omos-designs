@@ -248,7 +248,7 @@ export default function SimpleWebsitePage() {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center space-y-6 bg-muted/30 rounded-lg p-8">
+        <div className="text-center space-y-6 bg-muted/10 rounded-lg p-8">
           <h2 className="text-2xl font-heading font-bold">Ready to Get Your Simple Website?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Let's discuss your business goals and create a professional website that helps you 

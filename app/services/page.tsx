@@ -113,8 +113,8 @@ export default function ServicesOverviewPage() {
             Let's discuss your project and find the perfect solution for your business needs. 
             Free consultation with no obligations.
           </p>
-          <Button size="lg" className="px-8">
-            Schedule Free Consultation
+          <Button size="lg" className="px-8" asChild>
+            <a href="/contact">Get Started</a>
           </Button>
         </div>
       </div>

@@ -387,7 +387,7 @@ export default function WebApplicationsPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="px-8" asChild>
-              <a href="/contact">Schedule Discovery Call</a>
+              <a href="/contact">Build your App</a>
             </Button>
           </div>
         </div>
