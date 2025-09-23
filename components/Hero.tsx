@@ -9,30 +9,37 @@ import Link from "next/link";
 export function Hero() {
   return (
     <section className="bg-muted/10 pt-8 pb-16 px-12">
-    <div className="relative mx-auto my-2 flex max-w-7xl flex-col items-center justify-center">
+    <div className="relative mx-auto my-2 flex max-w-7xl flex-col items-center justify-center mt-5">
       <div className="px-4 py-8 md:py-14">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Your Digital Success Starts Here"
-            .split(" ")
-            .map((word, index) => (
-                <motion.span
-                key={index}
-                initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{
-                  duration: 0.3,
-                  delay: index * 0.1,
-                  ease: "easeInOut",
-                }}
-                className={`mr-2 inline-block ${
-                  index >= "Your Digital Success Starts Here".split(" ").length - 2
-                  ? "text-primary"
-                  : ""
-                }`}
-                >
-                {word}
-                </motion.span>
-            ))}
+          {['Your', 'Digital', 'Success'].map((word, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "easeInOut",
+              }}
+              className="mr-2 inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
+          <br />
+          <motion.span
+            initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.3 * 3,
+              ease: "easeInOut",
+            }}
+            className="text-primary inline-block"
+          >
+            Starts Here
+          </motion.span>
         </h1>
         <motion.p
           initial={{

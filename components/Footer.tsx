@@ -14,7 +14,6 @@ const footerLinks = {
   ],
   company: [
   { name: "About Us", href: "/about" as const },
-  { name: "Our Process", href: "/about#process" as const },
   { name: "Pricing", href: "/pricing" as const },
   { name: "Contact", href: "/contact" as const },
   ],
@@ -29,13 +28,9 @@ const footerLinks = {
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const handleNewsletterSignup = () => {
-    console.log('Newsletter signup clicked');
-  };
-
   return (
     <footer className="bg-muted/30 border-t">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 ml-5 mr-5">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Brand & Description */}
           <div className="lg:col-span-1 space-y-4">

@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main className="min-h-screen bg-background">
-  <div className="container mx-auto px-12 py-16">
+  <div className="container mx-auto px-12 py-16 mt-5">
   <div className="text-center space-y-4 mb-8">
           <h1 className="text-4xl font-heading font-bold">
             Simple, Transparent Pricing
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Monthly payments with lifetime updates. No hidden fees, no surprises. 
-            Choose the plan that fits your business needs.
+            Choose the option that fits your business needs.
           </p>
           <div className="text-center text-base text-muted-foreground font-bold mt-6 max-w-2xl mx-auto">
             Pricing shown is just an estimate—let's talk about your goals and budget, and we'll work together to create a website solution that fits. No matter your starting point, we'll help make it happen.
@@ -26,10 +26,9 @@ export default function PricingPage() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {/* Use min-h-full and flex-col for equal height, and flex-1 + flex for bottom alignment */}
-          {/* Simple Website */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 items-stretch">
+            {/* Simple Website */}
+            <div className="bg-card border rounded-lg p-6 flex flex-col h-full">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">Simple Website</h3>
               <p className="text-sm text-muted-foreground">Perfect for small businesses getting started</p>
@@ -38,7 +37,7 @@ export default function PricingPage() {
               <div className="text-3xl font-bold text-primary">$50+</div>
               <div className="text-sm text-muted-foreground">per month</div>
             </div>
-            <ul className="space-y-2 text-sm mt-6">
+            <ul className="space-y-2 text-sm mt-6 flex-1">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 1-2 page custom design
@@ -56,14 +55,13 @@ export default function PricingPage() {
                 Basic SEO optimization
               </li>
             </ul>
-            <div className="flex-1" />
-              <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+              <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium transition-colors mt-4 hover:bg-primary/5 hover:text-primary border border-primary" asChild>
                 <Link href="/contact">Get Started</Link>
               </Button>
           </div>
 
           {/* Complete Website */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between relative">
+          <div className="bg-card border rounded-lg p-6 flex flex-col h-full relative">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
               <span className="bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
                 Most Popular
@@ -77,7 +75,7 @@ export default function PricingPage() {
               <div className="text-3xl font-bold text-primary">$100+</div>
               <div className="text-sm text-muted-foreground">per month</div>
             </div>
-            <ul className="space-y-2 text-sm mt-6">
+            <ul className="space-y-2 text-sm mt-6 flex-1">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Custom multi-page design
@@ -96,13 +94,13 @@ export default function PricingPage() {
               </li>
             </ul>
             <div className="flex-1" />
-            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium transition-colors mt-4 hover:bg-primary/5 hover:text-primary border border-primary" asChild>
               <Link href="/contact">Get Started</Link>
             </Button>
           </div>
 
           {/* E-Commerce */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
+          <div className="bg-card border rounded-lg p-6 flex flex-col h-full">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">E-Commerce</h3>
               <p className="text-sm text-muted-foreground">Full online store with payment processing</p>
@@ -111,7 +109,7 @@ export default function PricingPage() {
               <div className="text-3xl font-bold text-primary">$200+</div>
               <div className="text-sm text-muted-foreground">per month</div>
             </div>
-            <ul className="space-y-2 text-sm mt-6">
+            <ul className="space-y-2 text-sm mt-6 flex-1">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Complete online store
@@ -138,13 +136,13 @@ export default function PricingPage() {
               </li>
             </ul>
             <div className="flex-1" />
-            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors mt-4" asChild>
+            <Button className="w-full bg-primary text-primary-foreground py-2 rounded-lg font-medium transition-colors mt-4 hover:bg-primary/5 hover:text-primary border border-primary" asChild>
               <Link href="/contact">Get Started</Link>
             </Button>
           </div>
 
           {/* Web Application */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col min-h-[520px] justify-between">
+          <div className="bg-card border rounded-lg p-6 flex flex-col h-full">
             <div className="text-center space-y-2">
               <h3 className="text-xl font-heading font-bold">Web Application</h3>
               <p className="text-sm text-muted-foreground">Custom functionality and integrations</p>
@@ -152,7 +150,7 @@ export default function PricingPage() {
             <div className="text-center space-y-1 mt-4">
               <div className="text-3xl font-bold text-primary">Custom Pricing</div>
             </div>
-            <ul className="space-y-2 text-sm mt-6">
+            <ul className="space-y-2 text-sm mt-6 flex-1">
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span>
                 Custom functionality
@@ -179,7 +177,7 @@ export default function PricingPage() {
               </li>
             </ul>
             <div className="flex-1" />
-            <Button className="w-full border border-primary text-primary py-2 rounded-lg font-medium hover:bg-primary/5 transition-colors mt-4" asChild>
+            <Button className="w-full border border-primary text-primary-foreground py-2 rounded-lg font-medium transition-colors mt-4 hover:bg-primary/5 hover:text-primary" asChild>
               <Link href="/contact">Request Quote</Link>
             </Button>
           </div>
@@ -192,28 +190,28 @@ export default function PricingPage() {
             <div className="space-y-4">
               <Accordion type="single" collapsible>
                 <AccordionItem value="monthly">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Why monthly payments?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Why monthly payments?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Monthly payments make professional websites accessible to small businesses. Plus, you get lifetime updates 
                     and redesigns, ensuring your site stays current with technology and design trends.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="updates">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What's included in lifetime updates?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What's included in lifetime updates?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Security updates, content changes, design refresh, new features, and complete redesigns when needed. 
                     Your site will never become outdated.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="switch">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I switch plans later?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Can I switch plans later?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
-                    Absolutely! As your business grows, you can upgrade to add new features and functionality. 
-                    We'll work with you to ensure a smooth transition.
+                    I don't even think of them as plans! Rather, I see them as flexible options and starting points. As your business grows, you can upgrade to add new features and functionality.
+                    We'll work together to ensure a smooth transition.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="lump">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Do you offer lump sum pricing?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Do you offer lump sum pricing?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Yes, we offer lump sum options for businesses that prefer upfront payment. However, 
                     you'll still receive all the lifetime update benefits.
@@ -225,10 +223,10 @@ export default function PricingPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center space-y-6 bg-muted/30 rounded-lg p-8 mt-16">
+        <div className="text-center space-y-6 bg-background rounded-lg p-8 mt-16">
           <h2 className="text-2xl font-heading font-bold">Ready to Get Started?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Schedule a free consultation to discuss your project and find the perfect plan for your business.
+            Schedule a free discovery call to discuss your project and find the perfect plan for your business.
           </p>
             <Button className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors" asChild>
               <Link href="/contact">Schedule Discovery Call</Link>

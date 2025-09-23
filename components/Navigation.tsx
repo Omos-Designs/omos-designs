@@ -217,8 +217,18 @@ export function Navigation() {
   {/* Mobile, Tablet & Large Screens (Header) */}
   <div className="xl:hidden fixed top-0 left-0 w-full z-50 bg-white dark:bg-background shadow">
         <div className="flex items-center justify-between px-4 py-3">
-          <Link href="/" className="flex items-center justify-center">
-            <img src="/logo_icon.svg" alt="Omos Designs Logo" className="h-12 w-auto object-contain" />
+          <Link href="/" className="flex items-center justify-center w-full">
+            {/* Show banner logo on small/mobile, icon logo on md+ */}
+            <img
+              src="/logo_banner.svg"
+              alt="Omos Designs Logo Banner"
+              className="block md:hidden h-12 w-auto object-contain mx-auto"
+            />
+            <img
+              src="/logo_icon.svg"
+              alt="Omos Designs Logo Icon"
+              className="hidden md:block h-20 w-auto object-contain"
+            />
           </Link>
           <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Open navigation menu">
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

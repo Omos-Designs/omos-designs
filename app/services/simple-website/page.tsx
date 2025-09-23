@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default function SimpleWebsitePage() {
   return (
     <main className="min-h-screen bg-background">
-  <div className="container mx-auto px-12 py-16">
+  <div className="container mx-auto px-12 py-16 mt-5">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">
@@ -216,28 +216,28 @@ export default function SimpleWebsitePage() {
             <div className="space-y-4">
               <Accordion type="single" collapsible>
                 <AccordionItem value="pages">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What if I need more pages later?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What if I need more pages later?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     You can upgrade to our Complete Website package at any time. We'll apply any payments 
                     you've already made toward the upgrade.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="content">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I update content myself?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Can I update content myself?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Simple websites are designed for businesses that prefer us to handle updates. For self-managed 
                     content, consider our Complete Website package with a content management system.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="updates">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What's included in lifetime updates?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What's included in lifetime updates?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Content changes, design updates, security patches, performance improvements, and even 
                     complete redesigns as your business evolves.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="hosting">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Do you provide hosting?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Do you provide hosting?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Yes, professional hosting is included. Your website will be fast, secure, and backed up regularly.
                   </AccordionContent>

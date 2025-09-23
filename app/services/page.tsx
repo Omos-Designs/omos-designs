@@ -25,7 +25,7 @@ export default function ServicesOverviewPage() {
       title: "Complete Website", 
       price: "$100+/month",
       description: "Multi-page solution for established businesses",
-      features: ["Custom multi-page design", "Content management", "Advanced SEO", "Analytics integration"],
+      features: ["Custom multi-page design", "Content management", "Advanced SEO", "Complete Digital Business Setup"],
       href: "/services/complete-website",
       popular: true
     },
@@ -47,12 +47,12 @@ export default function ServicesOverviewPage() {
 
   return (
   <main className="min-h-screen bg-muted/10">
-  <div className="container mx-auto px-4 py-16">
+  <div className="container mx-auto px-4 py-16 mt-5">
         {/* Hero Section */}
   <div className="rounded-lg p-8 space-y-6 text-center mb-16">
           <h1 className="text-4xl font-heading font-bold">Our Services</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From simple business websites to complex web applications, we provide custom-coded solutions 
+            From simple business websites to complex web applications, Omos provides custom-coded solutions
             that grow with your business. Monthly pricing with lifetime updates included.
           </p>
         </div>

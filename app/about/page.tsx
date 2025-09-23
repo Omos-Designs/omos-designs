@@ -8,16 +8,19 @@ import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-muted/10">
+    <main className="min-h-screen bg-muted/10 mt-5">
       <div className="container mx-auto px-8 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-5xl font-heading font-bold mb-2">
-            Who is <ColourfulText text="Omos Designs" />?
+            Who is
+            <span className="block xs:inline">
+              <ColourfulText text="Omos Designs" />?
+            </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Your reliable partner for professional web development. We're the "shoulder to lean on" 
-            for businesses looking to establish or enhance their digital presence.
+            Your reliable partner for professional web development. Omos is "shoulder to lean on" 
+            for businesses looking to establish or enhance their website and online presence.
           </p>
         </div>
 
@@ -30,7 +33,7 @@ export default function AboutPage() {
               Omos Designs specializes in creating custom-coded solutions that grow with your business.
             </p>
             <p className="text-muted-foreground">
-              Based in the Chicagoland area but serving businesses nationwide, we understand that every 
+              Based in the Chicagoland area but serving businesses nationwide, I understand that every 
               business is unique and deserves a website that reflects their individual story and goals.
             </p>
             <p className="text-muted-foreground">
@@ -44,7 +47,7 @@ export default function AboutPage() {
             </div>
             <h3 className="font-heading font-semibold mb-2">Partnership Approach</h3>
             <p className="text-sm text-muted-foreground">
-              We believe in building long-term partnerships, not just delivering projects.
+              I believe in building long-term partnerships, not just delivering projects.
             </p>
           </div>
         </div>
@@ -86,7 +89,7 @@ export default function AboutPage() {
         <div className="text-center space-y-6 rounded-lg p-8">
           <h2 className="text-2xl font-heading font-bold ">Ready to Partner With Us?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how we can help your business grow with a professional web presence 
+            Let's discuss how Omos can help your business grow with a professional web presence 
             that truly represents your brand and serves your customers.
           </p>
           <a href="/contact" className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">

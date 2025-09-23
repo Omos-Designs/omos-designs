@@ -18,7 +18,7 @@ export default function CompleteWebsitePage() {
   <div className="container mx-auto px-12 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
-          <div className="inline-block bg-primary/10 text-primary text-sm px-3 py-1 rounded-full font-medium mb-2">
+          <div className="mt-5 inline-block bg-primary/10 text-primary text-sm px-3 py-1 rounded-full font-medium mb-2">
             Most Popular
           </div>
           <h1 className="text-4xl font-heading font-bold">
@@ -266,31 +266,31 @@ export default function CompleteWebsitePage() {
             <div className="space-y-4">
               <Accordion type="single" collapsible>
                 <AccordionItem value="cms">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I update my website content myself?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Can I update my website content myself?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Yes! The included content management system (CMS) lets you easily update text, images, blog posts, and add new pages without any coding required.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="seo">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What advanced SEO features are included?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What advanced SEO features are included?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Your site will have XML sitemaps, schema markup, social media tags, and SEO-optimized content structure to help you rank higher and get found online.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="analytics">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">How does analytics integration work?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">How does analytics integration work?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
-                    We set up Google Analytics so you can track visitor behavior, popular pages, and conversion metrics from a user-friendly dashboard.
+                    We can set up Google Analytics so you can track visitor behavior, popular pages, and conversion metrics from a user-friendly dashboard.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="email">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Is professional domain & setup included?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Is professional domain & setup included?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Yes, we can manage your domain & create custom email addresses using your domain (e.g., info@yourbusiness.com) using a provider of your choosing (Microsoft Office, Google Workspace, etc.) and can integrate with newsletter platforms.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="support">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What kind of support do I get?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What kind of support do I get?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     You get ongoing support for updates, redesigns, security patches, and performance improvements—your site grows with your business.
                   </AccordionContent>

@@ -55,7 +55,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 md:px-12 py-16">
+      <div className="container mx-auto px-6 md:px-12 py-16 mt-5">
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">
             Get In Touch
@@ -145,7 +145,7 @@ export default function ContactPage() {
                 {loading ? "Sending..." : "Send Message"}
               </button>
               {success && (
-                <div className="text-green-600 text-sm mt-2">Message sent! We'll be in touch soon.</div>
+                <div className="text-green-600 text-sm mt-2">Message sent! I'll be in touch soon.</div>
               )}
               {error && (
                 <div className="text-red-600 text-sm mt-2">{error}</div>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                     hello@omosdesigns.com
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    We typically respond within 24 hours
+                    Typically respond within 24 hours
                   </p>
                 </div>
               </div>

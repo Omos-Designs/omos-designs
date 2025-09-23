@@ -13,14 +13,19 @@ export const metadata: Metadata = {
 export default function WebApplicationsPage() {
   return (
     <main className="min-h-screen bg-background">
-  <div className="container mx-auto px-12 py-16">
+  <div className="container mx-auto px-12 py-16 mt-5">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
           <h1 className="text-4xl font-heading font-bold">
             Custom Web Applications
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transform your business operations with custom web applications featuring advanced functionality, 
+            Do you have an app idea that you need help building? 
+            <br />
+            <br />
+          </p>
+          <p className="text-md text-muted-foreground max-w-3xl mx-auto">
+            Let's transform your business operations with custom web applications featuring advanced functionality, 
             third-party integrations, and scalable architecture tailored to your unique needs.
           </p>
         </div>
@@ -339,9 +344,9 @@ export default function WebApplicationsPage() {
         </div>
 
         {/* FAQ - Accordion Style */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center mb-8">Frequently Asked Questions</h2>
-          <div className="max-w-2xl mx-auto">
+        <div className="mb-16 text-left">
+          <h2 className="text-3xl font-heading font-bold mb-8 text-left">Frequently Asked Questions</h2>
+          <div className="max-w-2xl mx-auto text-left">
             <div className="space-y-4">
               <Accordion type="single" collapsible>
                 <AccordionItem value="custom">
@@ -357,7 +362,7 @@ export default function WebApplicationsPage() {
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="security">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">How do you ensure security and compliance?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">How do you ensure security and compliance?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     We implement enterprise-level security, data encryption, and compliance support for standards like GDPR and HIPAA, tailored to your industry requirements.
                   </AccordionContent>

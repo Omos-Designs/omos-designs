@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function EcommercePage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background mt-5">
   <div className="container mx-auto px-12 py-16">
         {/* Hero Section */}
         <div className="text-center space-y-4 mb-16">
@@ -316,28 +316,28 @@ export default function EcommercePage() {
             <div className="space-y-4">
               <Accordion type="single" collapsible>
                 <AccordionItem value="payment">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">What payment methods can I accept?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">What payment methods can I accept?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
-                    We integrate with Stripe and PayPal to accept all major credit cards, debit cards, 
+                    Common integrations include Stripe and/or PayPal to accept all major credit cards, debit cards, 
                     digital wallets, and bank transfers.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="shipping">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">How do shipping costs work?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">How do shipping costs work?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     We can set up flat rates, free shipping thresholds, real-time carrier rates, 
-                    or custom shipping rules based on your business needs.
+                    or custom shipping rules based on your business needs and preferences.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="inventory">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Can I manage inventory myself?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Can I manage inventory myself?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     Yes, you'll have full access to manage products, inventory levels, and variants 
                     through an easy-to-use admin dashboard.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="fees">
-                  <AccordionTrigger className="text-lg font-heading font-semibold">Are there transaction fees?</AccordionTrigger>
+                  <AccordionTrigger className="text-lg font-heading font-semibold text-left">Are there transaction fees?</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
                     You only pay standard payment processing fees (typically 2.9% + 30¢). 
                     No additional transaction fees from us.

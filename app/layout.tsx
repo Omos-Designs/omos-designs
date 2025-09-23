@@ -5,6 +5,7 @@ import { ThemeProvider } from '../components/theme-provider'
 import { Navigation } from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { Analytics } from "@vercel/analytics/next"
+import FloatingThemeToggle from "../components/FloatingThemeToggle"
 
 const openSans = Open_Sans({ 
   subsets: ['latin'],
@@ -60,8 +61,8 @@ export default function RootLayout({
         >
           <Navigation />
           {children}
-          
           <Footer />
+          <FloatingThemeToggle />
           <Analytics />
         </ThemeProvider>
       </body>
