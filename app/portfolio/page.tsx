@@ -82,7 +82,7 @@ export default function PortfolioPage() {
                   </p>
                 </div>
                 {item.href ? (
-                  <Link href={item.href} target="_blank" className="mt-auto">
+                  <Link href={item.href as any} target="_blank" className="mt-auto">
                     <Button variant="outline" className="w-full">
                       Visit Site
                     </Button>

@@ -150,7 +150,7 @@ export default function ServicesOverviewPage() {
                 </CardContent>
 
                 <div className="p-6 pt-0 mt-auto text-left">
-                  <Link href={category.href}>
+                  <Link href={category.href as any}>
                     <Button variant="outline" className="w-full justify-between">
                       Learn More
                       <ArrowRight className="h-4 w-4" />

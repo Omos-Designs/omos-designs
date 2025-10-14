@@ -12,7 +12,7 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    icon: "Heart" | "Users" | "Code2" | "Award";
+    icon: React.ReactNode;
     title: string;
     description: string;
   }[];

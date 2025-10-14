@@ -81,7 +81,7 @@ export function ServicesOverview() {
                 ease: "easeOut",
               }}
             >
-              <Link href={service.link}>
+              <Link href={service.link as any}>
                 <Card className="group relative flex h-full flex-col items-center justify-between rounded-2xl border border-border bg-card p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 transition-transform group-hover:scale-110">
                     {service.icon}
