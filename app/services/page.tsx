@@ -1,123 +1,193 @@
-import { Metadata } from 'next'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import Link from 'next/link'
-import ExpandableCardDemoStandard from '@/components/expandable-card-demo-standard'
-import { ProcessFlow } from '@/components/ProcessFlow'
-import { processIcons } from '@/components/process-icons'
-import { HighlightApproach } from '@/components/HighlightApproach'
+"use client";
 
-export const metadata: Metadata = {
-  title: 'Our Services - Omos Designs',
-  description: 'Professional web design and development services for small businesses. From simple websites to complex web applications.',
-}
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Globe, Cog, Cpu, LineChart, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ServicesOverviewPage() {
-  const services = [
+  const categories = [
     {
-      title: "Simple Website",
-      price: "$50+/month",
-      description: "Perfect for small businesses getting started online",
-      features: ["1-2 page custom design", "Mobile responsive", "Contact form", "Basic SEO"],
-      href: "/services/simple-website"
+      title: "Web & Digital Presence",
+      icon: <Globe className="w-6 h-6 text-accent" />,
+      problem: "Customers can’t find or trust your business online.",
+      solutions: [
+        "Modern, conversion-focused websites",
+        "Mobile-friendly design and SEO optimization",
+        "Lead capture forms, online booking, and call tracking",
+        "Integrated contact and quote request systems",
+      ],
+      packages: [
+        "Simple Site (for credibility & online presence)",
+        "Complete Site (for conversion & growth)",
+        "Ecommerce Store (for selling online)",
+      ],
+      href: "/services/web-digital",
     },
     {
-      title: "Complete Website", 
-      price: "$100+/month",
-      description: "Multi-page solution for established businesses",
-      features: ["Custom multi-page design", "Content management", "Advanced SEO", "Complete Digital Business Setup"],
-      href: "/services/complete-website",
-      popular: true
+      title: "Business Systems & Automation",
+      icon: <Cog className="w-6 h-6 text-accent" />,
+      problem: "You’re wasting hours on tasks that could be automated.",
+      solutions: [
+        "Automated text-back for missed calls",
+        "AI chatbots that answer FAQs and book appointments",
+        "Automatic follow-ups for new leads",
+        "Internal dashboards or CRMs for tracking customers and sales",
+      ],
+      packages: [
+        "AI auto-reply system for missed calls",
+        "Client booking automation for service businesses",
+        "Custom business management portal",
+      ],
+      href: "/services/automation",
     },
     {
-      title: "E-Commerce",
-      price: "$200+/month", 
-      description: "Full online store with payment processing",
-      features: ["Complete online store", "Payment processing", "Inventory management", "Order management"],
-      href: "/services/e-commerce"
+      title: "AI-Driven Tools & Web Apps",
+      icon: <Cpu className="w-6 h-6 text-accent" />,
+      problem: "You’ve outgrown spreadsheets and need smarter tools.",
+      solutions: [
+        "Custom web apps for workflow management, reporting, or client portals",
+        "Internal dashboards and analytics tools",
+        "SaaS development (from concept to launch)",
+        "Integration with APIs and AI models (OpenAI, Gemini, etc.)",
+      ],
+      packages: [
+        "Quote calculator tools",
+        "Inventory dashboards",
+        "AI-powered content or recommendation systems",
+      ],
+      href: "/services/ai-tools",
     },
     {
-      title: "Web Application",
-      price: "Custom pricing",
-      description: "Custom functionality and integrations",
-      features: ["Custom functionality", "Third-party integrations", "User authentication", "Scalable architecture"],
-      href: "/services/web-applications"
-    }
-  ]
+      title: "Technical Consulting & Growth Strategy",
+      icon: <LineChart className="w-6 h-6 text-accent" />,
+      problem: "You know your business needs tech — but don’t know where to start.",
+      solutions: [
+        "Technology audits and recommendations",
+        "System integration consulting (CRMs, booking, payments, AI tools)",
+        "Process improvement through automation",
+        "Ongoing technical partnership",
+      ],
+      packages: [],
+      href: "/services/consulting",
+    },
+  ];
 
   return (
-  <main className="min-h-screen bg-muted/10">
-  <div className="container mx-auto px-4 py-16 mt-5">
+    <main className="min-h-screen bg-muted/10 transition-colors">
+      <div className="container mx-auto px-6 md:px-10 py-20 space-y-28">
         {/* Hero Section */}
-  <div className="rounded-lg p-8 space-y-6 text-center mb-16">
-          <h1 className="text-4xl font-heading font-bold">Our Services</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From simple business websites to complex web applications, Omos provides custom-coded solutions
-            that grow with your business. Monthly pricing with lifetime updates included.
-          </p>
-        </div>
+        <section className="text-center max-w-5xl mx-auto space-y-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-bold text-foreground"
+          >
+            Our Services
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+          >
+            We don’t just build websites — we solve business problems through
+            thoughtful design, automation, and intelligent systems built to help
+            you grow.
+          </motion.p>
+        </section>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service) => (
-            <Card key={service.title} className={`relative ${service.popular ? 'border-primary' : ''}`}>
-              {service.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-medium">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <div className="text-2xl font-bold text-primary">{service.price}</div>
-                <CardDescription>{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <ul className="space-y-2 text-sm">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <span className="text-green-500">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="space-y-2">
-                  <Button className="w-full" variant={service.popular ? "default" : "outline"} asChild>
-                    <a href={service.href}>
+        {/* Service Categories */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          {categories.map((category, index) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.6, ease: "easeOut" }}
+            >
+              <Card className="h-full flex flex-col justify-between rounded-2xl border border-border bg-card shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+                <CardHeader className="text-left space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10">
+                      {category.icon}
+                    </div>
+                    <CardTitle className="text-2xl font-semibold text-foreground">
+                      {category.title}
+                    </CardTitle>
+                  </div>
+                  <p className="text-sm text-muted-foreground italic">
+                    Problem we solve: {category.problem}
+                  </p>
+                </CardHeader>
+
+                <CardContent className="space-y-6">
+                  <div>
+                    <h4 className="text-sm font-semibold text-accent uppercase mb-2">
+                      What We Deliver
+                    </h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      {category.solutions.map((solution) => (
+                        <li key={solution}>• {solution}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {category.packages.length > 0 && (
+                    <div>
+                      <h4 className="text-sm font-semibold text-accent uppercase mb-2">
+                        Packages / Examples
+                      </h4>
+                      <ul className="text-sm text-muted-foreground space-y-1">
+                        {category.packages.map((pkg) => (
+                          <li key={pkg}>• {pkg}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </CardContent>
+
+                <div className="p-6 pt-0 mt-auto text-left">
+                  <Link href={category.href}>
+                    <Button variant="outline" className="w-full justify-between">
                       Learn More
-                    </a>
-                  </Button>
+                      <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Link>
                 </div>
-              </CardContent>
-            </Card>
+              </Card>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Why Choose Us Section - Highlighted Values */}
-        <div className="space-y-8 mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center">Why Choose Our Approach?</h2>
-          <HighlightApproach />
-        </div>
-
-        {/* Process Section - Flow UI */}
-        <div className="space-y-8 mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center">Our Process</h2>
-          <ProcessFlow />
-        </div>
+        </section>
 
         {/* CTA Section */}
-  <div className="rounded-lg p-8 space-y-6 text-center">
-          <h2 className="text-2xl font-heading font-bold">Ready to Get Started?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss your project and find the perfect solution for your business needs. 
-            Free consultation with no obligations.
-          </p>
-          <Button size="lg" className="px-8" asChild>
-            <a href="/contact">Get Started</a>
-          </Button>
-        </div>
+        <section className="text-center border-t border-border pt-16 space-y-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-foreground"
+          >
+            Let’s Build Something <span className="text-accent">Real</span> Together
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          >
+            Whether it’s your first website or an advanced automation system,
+            we’ll help you find the right solution to grow your business.
+          </motion.p>
+          <Link href="/contact" className="inline-block mt-6">
+            <Button size="lg" className="px-8 py-3 font-medium">
+              Schedule a Free Consultation
+            </Button>
+          </Link>
+        </section>
       </div>
     </main>
-  )
+  );
 }

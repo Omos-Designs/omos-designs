@@ -1,102 +1,167 @@
 "use client";
 
-import { Metadata } from 'next'
-import { ColourfulText } from '@/components/ui/colorful-text'
-import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards'
-// No direct icon imports needed here
-
+import { motion } from "framer-motion";
+import { ColourfulText } from "@/components/ui/colorful-text";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Heart, Users, Code2, Award } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-muted/10 mt-5">
-      <div className="container mx-auto px-8 py-16">
+    <main className="min-h-screen bg-muted/10 transition-colors">
+      <div className="container mx-auto px-6 md:px-10 py-20 space-y-28">
         {/* Hero Section */}
-        <div className="text-center space-y-4 mb-16">
-          <h1 className="text-5xl font-heading font-bold mb-2">
-            Who is
-            <span className="block xs:inline">
-              <ColourfulText text="Omos Designs" />?
-            </span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Your reliable partner for professional web development. Omos is "shoulder to lean on" 
-            for businesses looking to establish or enhance their website and online presence.
-          </p>
-        </div>
+        <section className="text-center max-w-5xl mx-auto space-y-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-bold text-foreground leading-tight"
+          >
+            Who is <ColourfulText text="Omos Designs" />?
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            className="text-xl text-muted-foreground max-w-3xl mx-auto"
+          >
+            Your reliable partner for professional web development — the
+            shoulder your business can lean on for a stronger, more modern
+            online presence.
+          </motion.p>
+        </section>
 
         {/* Story Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-heading font-bold">Our Story</h2>
-            <p className="text-muted-foreground">
-              Founded with the vision of making professional web development accessible to small businesses, 
-              Omos Designs specializes in creating custom-coded solutions that grow with your business.
+        <section className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Our Story
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Founded to make modern web development accessible to small
+              businesses, Omos Designs builds custom-coded digital experiences
+              that evolve as your business grows.
             </p>
-            <p className="text-muted-foreground">
-              Based in the Chicagoland area but serving businesses nationwide, I understand that every 
-              business is unique and deserves a website that reflects their individual story and goals.
+            <p className="text-muted-foreground leading-relaxed">
+              Based in Chicagoland and serving businesses nationwide, we
+              understand that every company deserves a website that reflects its
+              unique story and goals.
             </p>
-            <p className="text-muted-foreground">
-              Our name "Omos" means "shoulder" in Greek - symbolizing our role as the reliable support 
-              system businesses need for their digital transformation.
+            <p className="text-muted-foreground leading-relaxed">
+              The name <strong>Omos</strong> means “shoulder” in Greek — a symbol
+              of how we support your business through thoughtful design,
+              reliable tech, and a long-term partnership mindset.
             </p>
-          </div>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-8 text-center">
-            <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-3xl">🤝</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
+            className="relative rounded-3xl border border-border bg-card p-10 text-center shadow-sm"
+          >
+            <div className="absolute -top-6 -left-6 h-16 w-16 rounded-full bg-accent/10 blur-2xl" />
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center text-4xl">
+              🤝
             </div>
-            <h3 className="font-heading font-semibold mb-2">Partnership Approach</h3>
-            <p className="text-sm text-muted-foreground">
-              I believe in building long-term partnerships, not just delivering projects.
+            <h3 className="text-xl font-semibold text-foreground mb-2">
+              Partnership Approach
+            </h3>
+            <p className="text-sm text-muted-foreground leading-snug max-w-sm mx-auto">
+              We believe in building relationships, not just delivering
+              projects. Your success becomes our shared goal.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </section>
 
         {/* Values Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-heading font-bold text-center mb-12">Our Values</h2>
-          <InfiniteMovingCards
-            items={[ 
-              {
-                icon: "Heart",
-                title: "Personal Touch",
-                description: "Every project receives individual attention and custom solutions tailored to specific needs.",
-              },
-              {
-                icon: "Users",
-                title: "Local Expertise",
-                description: "Based in Chicagoland with deep understanding of local business needs and markets.",
-              },
-              {
-                icon: "Code2",
-                title: "Custom Development",
-                description: "No templates or builders - everything is hand-coded for optimal performance and uniqueness.",
-              },
-              {
-                icon: "Award",
-                title: "Proven Results",
-                description: "5+ years of experience helping small businesses succeed online with modern solutions.",
-              },
-            ]}
-            direction="left"
-            speed="normal"
-            pauseOnHover={true}
-            className="my-4"
-          />
-        </div>
+        <section className="text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold text-foreground"
+          >
+            Our Core Values
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            <InfiniteMovingCards
+              items={[
+                {
+                  icon: <Heart className="h-5 w-5 text-accent" />,
+                  title: "Personal Touch",
+                  description:
+                    "Every project receives individual attention and custom solutions tailored to your business.",
+                },
+                {
+                  icon: <Users className="h-5 w-5 text-accent" />,
+                  title: "Local Expertise",
+                  description:
+                    "Deep understanding of Chicagoland markets and small business challenges.",
+                },
+                {
+                  icon: <Code2 className="h-5 w-5 text-accent" />,
+                  title: "Custom Development",
+                  description:
+                    "No templates — each build is hand-crafted for performance and flexibility.",
+                },
+                {
+                  icon: <Award className="h-5 w-5 text-accent" />,
+                  title: "Proven Results",
+                  description:
+                    "5+ years helping small businesses succeed through modern design and reliable code.",
+                },
+              ]}
+              direction="left"
+              speed="normal"
+              pauseOnHover
+              className="my-6"
+            />
+          </motion.div>
+        </section>
 
         {/* CTA Section */}
-        <div className="text-center space-y-6 rounded-lg p-8">
-          <h2 className="text-2xl font-heading font-bold ">Ready to Partner With Us?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Let's discuss how Omos can help your business grow with a professional web presence 
-            that truly represents your brand and serves your customers.
-          </p>
-          <a href="/contact" className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-            Schedule Discovery Call
-          </a>
-        </div>
+        <section className="text-center space-y-8 border-border pt-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-bold text-foreground"
+        >
+          Ready to Build Something{" "}
+          <span className="text-accent">Real?</span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
+          Let’s discuss how Omos can help your business grow with a digital
+          presence that works as hard as you do.
+        </motion.p>
+
+        <Link href="/contact" className="mt-8 inline-block">
+          <Button size="lg" className="px-8 py-3 font-medium">
+            Schedule a Discovery Call
+          </Button>
+        </Link>
+      </section>
       </div>
     </main>
-  )
+  );
 }

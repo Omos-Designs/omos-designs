@@ -7,10 +7,10 @@ import { MapPin, Phone, Mail, Heart } from "lucide-react";
 
 const footerLinks = {
   services: [
-  { name: "Simple Website", href: "/services#simple" as const },
-  { name: "Complete Website", href: "/services#complete" as const },
-  { name: "E-Commerce", href: "/services#ecommerce" as const },
-  { name: "Web Applications", href: "/services#webapp" as const },
+  { name: "Websites & Digital Presence", href: "/services#web-digital" as const },
+  { name: "Business Systems & Automations", href: "/services#automations" as const },
+  { name: "AI Tools & Web Apps", href: "/services#ai-tools" as const },
+  { name: "Tech Consulting", href: "/services#consulting" as const },
   ],
   company: [
   { name: "About Us", href: "/about" as const },
@@ -29,7 +29,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t">
+    <footer className="bg-muted/10 border-t">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 ml-5 mr-5">
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Brand & Description */}

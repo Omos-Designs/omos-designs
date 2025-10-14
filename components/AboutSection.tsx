@@ -1,81 +1,107 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Heart, Users, Code2, Award } from "lucide-react";
-// import teamImage from "@assets/generated_images/Professional_team_photo_7fcf86a6.png";
+import Link from "next/link";
 
 const values = [
   {
-    icon: <Heart className="w-6 h-6" />,
+    icon: <Heart className="w-6 h-6 text-accent" />,
     title: "Personal Touch",
-    description: "Every project receives individual attention and custom solutions tailored to specific needs."
+    description:
+      "Every project receives individual attention and custom solutions tailored to your business.",
   },
   {
-    icon: <Users className="w-6 h-6" />,
+    icon: <Users className="w-6 h-6 text-accent" />,
     title: "Local Expertise",
-    description: "Based in Chicagoland with deep understanding of local business needs and markets."
+    description:
+      "Based in Chicagoland with a deep understanding of local markets and small business needs.",
   },
   {
-    icon: <Code2 className="w-6 h-6" />,
+    icon: <Code2 className="w-6 h-6 text-accent" />,
     title: "Custom Development",
-    description: "No templates or builders - everything is hand-coded for optimal performance and uniqueness."
+    description:
+      "No templates or builders — everything is hand-coded for performance, flexibility, and uniqueness.",
   },
   {
-    icon: <Award className="w-6 h-6" />,
+    icon: <Award className="w-6 h-6 text-accent" />,
     title: "Proven Results",
-    description: "5+ years of experience helping small businesses succeed online with modern solutions."
-  }
+    description:
+      "5+ years of experience helping small businesses succeed online through modern design and technology.",
+  },
 ];
 
 export function AboutSection() {
-  const handleLearnMore = () => {
-    window.location.href = "/about";
-  };
-
   return (
-    <section className="py-16 bg-muted/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-  <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
-          {/* Left: Why Omos content */}
-          <div className="space-y-8 h-full flex flex-col justify-between">
-            <div className="space-y-4">
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold">
+    <section className="relative border-t border-border bg-muted/10 py-24 transition-colors">
+      <div className="container mx-auto max-w-7xl px-6 md:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Text content */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="space-y-6"
+          >
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
+                About Omos Designs
+              </p>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
                 Why Omos?
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                <strong> Your Digital Partner, Not Just Another Agency</strong>
-                <br />
-                <br />
-                <strong>Omos</strong> means "shoulder" in Greek – symbolizing our commitment to being 
-                the shoulder your business can lean on for all things digital. 
-              </p>
             </div>
-            <Button 
-              onClick={handleLearnMore} 
-              data-testid="about-learn-more"
-              size="default"
-              className="mt-2 px-5 py-2 text-base font-medium rounded-lg left-0"
-              style={{ alignSelf: 'flex-start' }}
-            >
-              Learn More
-            </Button>
-          </div>
-          {/* Right: Values Cards in 2x2 grid, smaller and stretched */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full h-full items-stretch">
+
+            <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
+              <strong>Omos</strong> means “shoulder” in Greek — representing our
+              commitment to being the shoulder your business can lean on for all
+              things digital. We’re not just another agency — we’re your
+              dedicated technology partner.
+            </p>
+
+            <Link href="/about">
+              <Button size="lg" className="mt-4 px-8 py-3 font-medium">
+                Learn More
+              </Button>
+            </Link>
+          </motion.div>
+
+          {/* Right: Values Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
             {values.map((value, index) => (
-              <Card key={index} className="hover-elevate transition-all duration-300 w-full h-full flex">
-                <CardContent className="px-4 py-6 text-center space-y-3 flex flex-col items-center justify-center h-full" style={{ minHeight: '80px' }}>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-chart-1/20 to-chart-2/20 flex items-center justify-center text-chart-1 mb-2">
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3 + index * 0.1,
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
+              >
+                <Card className="group h-full rounded-2xl border border-border bg-card p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md flex flex-col items-center justify-center">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 transition-transform group-hover:scale-110">
                     {value.icon}
                   </div>
-                  <h4 className="font-heading font-bold text-lg mb-2">{value.title}</h4>
-                  <p className="text-sm text-muted-foreground leading-snug mt-2">{value.description}</p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-0 space-y-2">
+                    <h4 className="text-lg font-semibold text-foreground">
+                      {value.title}
+                    </h4>
+                    <p className="text-sm text-muted-foreground leading-snug">
+                      {value.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

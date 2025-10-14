@@ -61,8 +61,7 @@ export default function ContactPage() {
             Get In Touch
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to transform your business with a professional website?
-            Let's discuss your project and find the perfect solution for your needs.
+            Ready to solve real business challenges with modern digital solutions? Let’s talk about your goals and create a website or system that helps your business grow — efficiently and affordably.
           </p>
         </div>
         <div className="grid lg:grid-cols-2 gap-12">

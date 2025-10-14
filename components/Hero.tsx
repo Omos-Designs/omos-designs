@@ -1,181 +1,108 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Code, Palette, Zap } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
- 
+import { useRef } from "react";
+
 export function Hero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "10%"]);
+
   return (
-    <section className="bg-muted/10 pt-8 pb-16 px-12">
-    <div className="relative mx-auto my-2 flex max-w-7xl flex-col items-center justify-center mt-5">
-      <div className="px-4 py-8 md:py-14">
-        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {['Your', 'Digital', 'Success'].map((word, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              transition={{
-                duration: 0.3,
-                delay: index * 0.1,
-                ease: "easeInOut",
-              }}
-              className="mr-2 inline-block"
-            >
-              {word}
-            </motion.span>
-          ))}
-          <br />
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-muted/10 px-6 pt-20 pb-24 transition-colors"
+    >
+      <motion.div
+        style={{ y }}
+        className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center"
+      >
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mx-auto text-4xl font-semibold text-foreground md:text-6xl lg:text-7xl tracking-tight leading-[1.1]"
+        >
+          Let’s Build Something{" "}
           <motion.span
-            initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-            animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-            transition={{
-              duration: 0.3,
-              delay: 0.3 * 3,
-              ease: "easeInOut",
-            }}
-            className="text-primary inline-block"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+            className="text-accent font-bold"
           >
-            Starts Here
+            Real
           </motion.span>
-        </h1>
+        </motion.h1>
+
+        {/* Subtext */}
         <motion.p
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 0.8,
-          }}
-          className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6, ease: "easeOut" }}
+          className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
         >
-          Custom-coded websites and web applications for small businesses, tailored to your unique needs.
+          Websites, tools, and automations that solve real business problems —
+          helping small businesses save time, capture more leads, and work
+          smarter.
         </motion.p>
+
+        {/* CTAs */}
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1,
-          }}
-          className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
-        >
-          <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.2,
-          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <Link href="/contact">
-            <button className="w-60 transform rounded-lg bg-primary px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-              Get Started today
-            </button>
+            <Button className="px-8 py-3 text-base font-medium transition-transform duration-300 hover:-translate-y-0.5">
+              Get Started Today
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </Link>
-          </motion.div>
-          <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.2,
-          }}
-        >
           <Link href="/services">
-            <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-50">
+            <Button
+              variant="outline"
+              className="px-8 py-3 text-base font-medium transition-transform duration-300 hover:-translate-y-0.5"
+            >
               Explore Services
-            </button>
+            </Button>
           </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Feature Cards */}
+      <div className="relative z-10 mx-auto mt-16 grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-3">
+        {[
+          { icon: Code, title: "Custom Coded", color: "text-chart-1" },
+          { icon: Palette, title: "Beautifully Designed", color: "text-chart-2" },
+          { icon: Zap, title: "Fast & Reliable", color: "text-chart-3" },
+        ].map((item, index) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 1.3 + index * 0.1,
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+          >
+            <Card className="flex flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <item.icon className={`h-6 w-6 ${item.color}`} />
+              <span className="text-sm font-medium text-foreground">
+                {item.title}
+              </span>
+            </Card>
           </motion.div>
-        </motion.div>
-      </div>
-      <div className="grid sm:grid-cols-3 gap-10">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.5,
-          }}
-        >
-          <Card className="p-4 hover-elevate">
-            <div className="flex items-center space-x-2">
-              <Code className="w-5 h-5 text-chart-1" />
-              <span className="text-sm font-medium">Custom Coded</span>
-            </div>
-          </Card>
-        </motion.div>
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.5,
-          }}
-        >
-          <Card className="p-4 hover-elevate">
-            <div className="flex items-center space-x-2">
-              <Palette className="w-5 h-5 text-chart-2" />
-              <span className="text-sm font-medium">Beautiful Designs</span>
-            </div>
-          </Card>
-        </motion.div>
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.3,
-            delay: 1.5,
-          }}
-        >
-          <Card className="p-4 hover-elevate">
-            <div className="flex items-center space-x-2">
-              <Zap className="w-5 h-5 text-chart-3" />
-              <span className="text-sm font-medium">Fast & Reliable</span>
-            </div>
-          </Card>
-        </motion.div>
-        </div>
+        ))}
       </div>
     </section>
   );

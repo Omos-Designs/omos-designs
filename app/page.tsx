@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { Hero } from "@/components/Hero"
 import { AboutSection } from '@/components/AboutSection'
-import { ServicesPricingOverview } from '@/components/PricingSummary'
+import { ServicesOverview } from '@/components/ServicesOverview'
 
 export const metadata: Metadata = {
   title: 'Professional Web Design & Development',
@@ -13,7 +13,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-background">
       <Hero />
       {/* Services & PricingOverview Section */}
-      <ServicesPricingOverview />
+      <ServicesOverview />
       {/* About Section */}
       <AboutSection />
     </main>
