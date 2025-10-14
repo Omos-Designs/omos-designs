@@ -28,9 +28,7 @@ export default function AboutPage() {
             transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
           >
-            Your reliable partner for professional web development — the
-            shoulder your business can lean on for a stronger, more modern
-            online presence.
+            Omos Designs is a one-person studio in Chicago helping small businesses grow through modern websites, smart automations, and practical AI tools — built to save time, capture leads, and pay for themselves.
           </motion.p>
         </section>
 
